@@ -1,0 +1,49 @@
+html, body, ul, h1, h2, h3, h4, h5, h6{
+	margin: 0;
+	padding: 0;
+}
+header{
+	background: #232425;
+	height: 100px;
+	display: inline-block;
+	width: 100%;
+	color: white;
+	border-bottom: 2px solid black;
+}
+header span{
+	font-size: 40px;
+}
+header .logo{
+	float: left;
+	width: 20%;
+	height: 100px;
+}
+header ul, li {
+	list-style: none;
+}
+
+header nav{
+	width: 75%;
+	float: right;
+	height: 100px;
+	text-align: right;
+	overflow: hidden;
+}
+
+header li{
+	text-transform: uppercase;
+	display: inline-block;
+	padding: 41px 20px ;
+}
+
+header li:hover{
+	background: darkred;
+	cursor: pointer;
+	color: smokewhite;
+	border-top: 1px solid red;
+}
+
+header .active{
+	color:red;
+	text-shadow: 1px 1px 10px darkred;
+}
