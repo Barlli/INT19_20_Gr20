@@ -1,0 +1,71 @@
+/*--- Button ---*/
+.btn {
+	color: white;
+	border-radius: 5px;
+	border: 0px;
+	padding: 5px 15px;
+	text-transform: uppercase;
+	cursor: pointer;
+	padding: 6px 12px;
+	margin-top: 5px;
+}
+.btn-red {
+	background: #e2494b;
+}
+
+/* --- Rows and Columns ----*/
+.row {
+	display: inline-block;
+	width: 100%;
+}
+.row > .col20 {
+	width: 20%;
+}
+.row > .col10 {
+	width: 10%;
+}
+.row > .col25 {
+	width: 25%;
+}
+.row > .col50 {
+	width: 50%;	
+}
+.row > .col75 {
+	width: 74%;
+}
+.row > .col100 {
+	width: 100%;
+}
+.row > div[class*=" col"], .row > div[class^="col"]{
+	float: left;
+}
+.col10 > * , .col20 > *, .col25 > *, .col50 > *, .col75 > *, .col100 > * {
+	padding: 10px 20px;
+	margin: 10px;
+}
+.p0 {
+	padding: 0 !important;
+}
+.clear10 {
+	height: 10px;
+	clear: both;
+}
+.clear20 {
+	height: 20px;
+	clear: both;
+}
+.clear25 {
+	height: 25px;
+	clear: both;
+}
+.clear50 {
+	height: 50px;
+	clear: both;
+}
+.clear100 {
+	height: 100px;
+	clear: both;
+}
+.center {
+	text-align: center;
+}
