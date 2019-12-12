@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Impresionist</title>
+	<title>Alboturbo</title>
 	<link rel="stylesheet" type="text/css" href="./css/style.css">
-		<link rel="stylesheet" type="text/css" href="./css/abkstack.css">
+	<link rel="stylesheet" type="text/css" href="./css/abkstack.css">
+	<link rel="stylesheet" type="text/css" href="./css/fontawesome/css/all.css">
+	<link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
 </head>
 <body>
 	<header>
 		<div class="logo" >
-			<h1><span>A</span>lbaTurbo<span style="color: red;">VPS</span></h1>
+			<h1><span>A</span>lboTurbo<span style="color: red;">VPS</span></h1>
 			<p>VPS-at ma t'mire n'sheher</p>
 		</div>
 		<nav>
@@ -22,7 +24,7 @@
 			</ul>
 		</nav>
 	</header>
-	<section>
+	<section style="height: calc(100vh - 100px);">
 		<div style="width: 45%; float: left;">
 			<div style="padding: 50px;">
 				<h1>Lorem ipsum dolor sit</h1>
@@ -37,52 +39,80 @@
 		</div>	
 	</section>
 	<div class="news">
-		<div class="row">
+		<div class="row text-white">
 			<div class="col25">
 				<article style="background:#0089ab;">
 					<h1>Windows<br/><span style="color: red;">Server</span></h1>
-					<img src="./images/windows.png" style="height: 100px; width: 100px; background-color: #57b1c8; border: 25px solid #57b1c8; border-radius: 50%;"/>
-					<p ></p>
+					<i class="fab fa-windows fa-4x text-white" style="background: #57b1c8; border-radius: 50%; border: 40px solid #57b1c8;"></i>
+					<ul class="specifics">
+						<li>3GB RAM</li>
+						<li>Windows Server 2019</li>
+						<li>256 GB SSD</li>
+						<li>Intel Xeon </li>
+						<li>Unlimited bandwidth</li>
+					</ul>
 					<button class="btn btn-red">Buy now</button>
 				</article>
 			</div>
 			<div class="col25">
-				<article>
+				<article style="background: #DD4814;">
 					<h1>Linux<br/><span style="color: red;">Server</span></h1>
-					<img src="./images/milingona.gif" />
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis vero amet eaque rem unde accusamus ipsum doloremque esse voluptatibus. Dolorum possimus illum quasi, enim in? Accusamus dignissimos earum, nihil ipsam.</p>
+					<i class="fab fa-linux fa-4x text-white" style="background: #ff7545; border-radius: 50%; border: 40px solid #ff7545;"></i>
+					<ul class="specifics">
+						<li>8GB RAM</li>
+						<li>RHEL/CentOS/Ubuntu</li>
+						<li>256 GB SSD</li>
+						<li>Intel Xeon</li>
+						<li>Unlimited bandwidth</li>
+					</ul>			
 					<button class="btn btn-red">Buy now</button>
 				</article>
 			</div>
 			<div class="col25">
-				<article>
-					<h1>RDP<br/><span style="color: red;">Account</span></h1>
-					<img src="./images/milingona.gif" />
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sequi, non, similique? Voluptatem eius totam natus, blanditiis nemo nostrum eveniet minima aliquam, eum officia impedit magni illum et iste iusto dolorem.</p>
+				<article style="background: #0b62a0;">
+					<h1>Email<br/><span style="color: red;">Server</span></h1>
+					<i class="fas fa-envelope fa-4x text-white" style="background: #057cd2; border-radius: 50%; border: 40px solid #057cd2;"></i>
+					<ul class="specifics">
+						<li>Free Domain</li>
+						<li>Unlimited Alias</li>
+						<li>Unlimited Users</li>
+						<li>Unlimited Quota</li>
+						<li>Unlimited bandwidth</li>
+					</ul>
 					<button class="btn btn-red">Buy now</button>
 				</article>
 			</div>
 			<div class="col25">
-				<article>
-					<h1>SSD<br/><span style="color: red;">Vps</span></h1>
-					<img src="./images/milingona.gif" />
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid sint, debitis nobis minus suscipit totam consequuntur non ad error sapiente, iusto neque eum tenetur commodi distinctio illum labore, magnam ipsam.</p>
+				<article style="background: purple;">
+					<h1>Cloud<br/><span style="color: red;">Storage</span></h1>
+						<i class="fas fa-cloud fa-4x" style="background: #bf0bbf; border-radius: 50%; border: 40px solid #bf0bbf;"></i>
+					<ul class="specifics">
+						<li>Free Domain</li>
+						<li>Unlimited Alias</li>
+						<li>Unlimited Users</li>
+						<li>Unlimited Storage</li>
+						<li>24/7 Active</li>
+					</ul>
 					<button class="btn btn-red">Buy now</button>
 				</article>
 			</div>
 		</div>
 	</div>
 	<hr/>
-	<div>
+	<div class="container">
 		<div class="row">
 			<div class="col50">
 				<h1>CEO-s</h1>
 				<div class="row p0">
 					<div class="col50 center">
-						<img src="./images/dyli.jpg" style="width: 270px;">
+						<div>
+							<img src="./images/dyli.jpg" style="width: 100%;">
+						</div>
 					</div>
 					<div class="col50 center">
-						<img src="./images/barlli.jpg" style="width: 270px;">
+						<div>
+							<img src="./images/barlli.jpg" style="width: 100%;">
+						</div>
 					</div>
 				</div>
 			</div>
@@ -90,18 +120,22 @@
 				<h1>Reviews</h1>
 				<div class="row p0">
 					<div class="col50 center">
-						<img src="https://pbs.twimg.com/profile_images/988775660163252226/XpgonN0X_400x400.jpg" style="width: 270px;">
+						<div>
+						<img src="https://pbs.twimg.com/profile_images/988775660163252226/XpgonN0X_400x400.jpg" style="width: 100%;">
+						</div>
 					</div>
 					<div class="col50">
-						<p class="p0">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempora atque quisquam non voluptates iste recusandae distinctio, necessitatibus voluptas consectetur. Sunt rem quisquam perferendis accusantium, quae, dolore earum nisi natus molestiae. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius perspiciatis, provident iure similique doloremque explicabo praesentium necessitatibus, officia sapiente omnis, beatae accusantium repellendus. Laborum soluta recusandae omnis, similique corrupti ab.</p>
+						<div>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempora atque quisquam non voluptates iste recusandae distinctio, necessitatibus voluptas consectetur. Sunt rem quisquam perferendis accusantium, quae, dolore earum nisi natus molestiae. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius perspiciatis, provident iure similique doloremque explicabo praesentium necessitatibus, officia sapiente omnis, beatae accusantium repellendus. Laborum soluta recusandae omnis, similique corrupti ab.</p>
 						<button class="btn btn-red">Read more</button>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 	<div class="clear10" style="background: lightgrey"></div>
-	<footer>
+	<footer class="container">
 		<div class="row">
 			<div class="col25">
 				<h1>About us</h1>
@@ -151,7 +185,7 @@
 			</div>
 		</div>
 		<hr/>
-		<p>Copyright &copy; 2019 CompanyName</p>
+		<p>Copyright &copy; 2019 Alboturbo</p>
 	</footer>
 </body>
 </html>
