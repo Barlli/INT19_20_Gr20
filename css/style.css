@@ -1,4 +1,5 @@
 html, body, h1, h2, h3, h4, h5, h6, ul, section, p {
+	font-family: 'Roboto', sans-serif;
 	padding: 0;
 	margin: 0;
 }
@@ -107,5 +108,9 @@ footer li a::after {
 }
 footer li {
 	padding: 5px;
+	border-bottom: 1px solid lightgrey;
+}
+.specifics > li {
+	padding: 20px 5px;
 	border-bottom: 1px solid lightgrey;
 }
