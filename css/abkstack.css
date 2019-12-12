@@ -12,7 +12,9 @@
 .btn-red {
 	background: #e2494b;
 }
-
+.btn-red:hover {
+	background: #d81d1f;
+}
 /* --- Rows and Columns ----*/
 .row {
 	display: inline-block;
@@ -41,10 +43,30 @@
 }
 .col10 > * , .col20 > *, .col25 > *, .col50 > *, .col75 > *, .col100 > * {
 	padding: 10px 20px;
-	margin: 10px;
 }
 .p0 {
 	padding: 0 !important;
+}
+.p1 {
+	padding: 1rem !important;
+}
+.p2 {
+	padding: 2rem !important;
+}
+.m0, .m-0 {
+	margin: 0 !important;
+}
+.m1 {
+	margin: 1rem !important;
+}
+.m2 {
+	margin: 2rem !important;
+}
+.m-1 {
+	margin: -1rem !important;
+}
+.m-2 {
+	margin: -2rem !important;
 }
 .clear10 {
 	height: 10px;
@@ -68,4 +90,10 @@
 }
 .center {
 	text-align: center;
+}
+.container {
+	padding: 0px 50px;
+}
+.text-white {
+	color: white !important;
 }
