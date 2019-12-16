@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Alboturbo</title>
+	<title>Alboturboe</title>
 	<link rel="stylesheet" type="text/css" href="./css/style.css">
 	<link rel="stylesheet" type="text/css" href="./css/abkstack.css">
 	<link rel="stylesheet" type="text/css" href="./css/fontawesome/css/all.css">
 	<link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 </head>
 <body>
 	<header>
@@ -16,11 +18,11 @@
 		<nav>
 			<ul>
 				<li class="active">Home</li>
-				<li>Style Demo</li>
+				<li>Blog</li>
 				<li>Full Width</li>
-				<li>Dropdown</li>
-				<li>Portfolio</li>
-				<li>Gallery</li>
+				<li>Services</li>
+				<li>Contact us</li>
+				<li>Client Login</li>
 			</ul>
 		</nav>
 	</header>
@@ -158,19 +160,8 @@
 				</ul>
 			</div>
 
-			<div class="col25">
+			<div class="col25" id="latestPosts">
 				<h1>Latest Blog Posts</h1>
-				<article>
-					<h3>Post title</h3>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis saepe sed numquam laborum quos vero totam placeat? </p>
-					<a href="#">Read more</a>
-				</article>
-
-				<article>
-					<h3>Post title</h3>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis saepe sed numquam laborum quos vero totam placeat?</p>
-					<a href="#">Read more</a>
-				</article>
 			</div>
 
 			<div class="col25">
@@ -185,7 +176,19 @@
 			</div>
 		</div>
 		<hr/>
-		<p>Copyright &copy; 2019 Alboturbo</p>
+		<p>Copyright &copy; 2019 CompanyName</p>
 	</footer>
+	<script type="text/javascript">
+		$(document).ready(function() { 
+            $.getJSON('https://sheetsu.com/apis/v1.0su/ea3ec3d92498', function(result) { 
+			    $.each(result, function(i, field){
+		            if(i <= 5)
+		            $('#latestPosts').append('<article><h3>' + field.title + '</h3><p>' + field.content.split(/\s+/).slice(0,5).join(" ") + ' ...</p><a href="blog.html?id=' + i + '">Read more</a></article>');
+		            console.log("Posts loaded");
+			    	
+			    });
+			}); 
+        }); 
+	</script>
 </body>
 </html>
