@@ -37,19 +37,33 @@ header nav {
 	text-align: right;
 	overflow: hidden;
 }
-header ul, li {
+ul, li {
 	list-style: none;
 }
-header li{
+header > nav > ul > li{
 	text-transform: uppercase;
 	display: inline-block;
 	padding: 41px 20px;
+	border-top: 1px solid transparent;
 }
-header li:hover {
+header > nav > ul > li:hover {
 	background: #e2494b;
 	cursor: pointer;
 	border-top: 1px solid red;
 	color: whitesmoke;
+}
+.dropdown {
+	display: none;	
+	position: absolute;
+}
+.dropdown:hover {
+}
+.dropdown li {
+	padding: 10px;
+	background: black;
+}
+.dropdown li:hover {
+	background: #e2494b;
 }
 header .active {
 	color: red;
@@ -113,4 +127,7 @@ footer li {
 .specifics > li {
 	padding: 20px 5px;
 	border-bottom: 1px solid lightgrey;
+}
+.col25 > article {
+	overflow: hidden;
 }
