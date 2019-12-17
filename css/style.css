@@ -46,11 +46,13 @@ header > nav > ul > li{
 	padding: 41px 20px;
 	border-top: 1px solid transparent;
 }
+header li a {
+	text-decoration: none;
+}
 header > nav > ul > li:hover {
 	background: #e2494b;
 	cursor: pointer;
 	border-top: 1px solid red;
-	color: whitesmoke;
 }
 .dropdown {
 	display: none;	
@@ -65,9 +67,15 @@ header > nav > ul > li:hover {
 .dropdown li:hover {
 	background: #e2494b;
 }
-header .active {
+nav a:visited {
+	color: whitesmoke;
+}
+header .active > a{
 	color: red;
 	text-shadow: 1px 1px 1px darkred;
+}
+header .active:hover > a {
+	color: whitesmoke;
 }
 section {
 	background: #1e1e1e;
