@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Alboturboe</title>
+	<title>Alboturbo</title>
 	<link rel="stylesheet" type="text/css" href="./css/style.css">
 	<link rel="stylesheet" type="text/css" href="./css/abkstack.css">
 	<link rel="stylesheet" type="text/css" href="./css/fontawesome/css/all.css">
@@ -20,7 +20,15 @@
 				<li class="active">Home</li>
 				<li>Blog</li>
 				<li>Full Width</li>
-				<li>Services</li>
+				<li>
+				Services
+				<ul class="dropdown">
+					<li>Windows Server</li>
+					<li>Linux Server</li>
+					<li>Email Server</li>
+					<li>Cloud Storage</li>
+				</ul>
+				</li>
 				<li>Contact us</li>
 				<li>Client Login</li>
 			</ul>
@@ -178,17 +186,27 @@
 		<hr/>
 		<p>Copyright &copy; 2019 CompanyName</p>
 	</footer>
+
 	<script type="text/javascript">
-		$(document).ready(function() { 
-            $.getJSON('https://sheetsu.com/apis/v1.0su/ea3ec3d92498', function(result) { 
-			    $.each(result, function(i, field){
-		            if(i <= 5)
-		            $('#latestPosts').append('<article><h3>' + field.title + '</h3><p>' + field.content.split(/\s+/).slice(0,5).join(" ") + ' ...</p><a href="blog.html?id=' + i + '">Read more</a></article>');
-		            console.log("Posts loaded");
-			    	
-			    });
-			}); 
-        }); 
+$(document).ready(function() { 
+	//footer latest blog posts
+    $.getJSON('https://sheetsu.com/apis/v1.0su/ea3ec3d92498', function(result) { 
+	    $.each(result, function(i, field){
+            if(i <= 5)
+            $('#latestPosts').append('<article><h3>' + field.title + '</h3><p>' + field.content.split(/\s+/).slice(0,5).join(" ") + ' ...</p><a href="blog.html?id=' + i + '">Read more</a></article>');
+            console.log("Posts loaded");
+	    	
+	    });
+	}); 
+	//Hover
+	$('.dropdown').parent().hover(
+		function() {
+			$('.dropdown').css('display','inline-block');
+		}, function() {
+			$('.dropdown').css('display','none');
+		}
+	);
+}); 
 	</script>
 </body>
 </html>
