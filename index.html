@@ -190,9 +190,9 @@
 	<script type="text/javascript">
 $(document).ready(function() { 
 	//footer latest blog posts
-    $.getJSON('https://sheetsu.com/apis/v1.0su/ea3ec3d92498', function(result) { 
+    $.getJSON('./blog.json', function(result) { 
 	    $.each(result, function(i, field){
-            if(i <= 5)
+            if(i < 4)
             $('#latestPosts').append('<article><h3>' + field.title + '</h3><p>' + field.content.split(/\s+/).slice(0,5).join(" ") + ' ...</p><a href="blog.html?id=' + i + '">Read more</a></article>');
             console.log("Posts loaded");
 	    	
