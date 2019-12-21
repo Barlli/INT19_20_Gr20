@@ -37,12 +37,14 @@ header nav {
 	text-align: right;
 	overflow: hidden;
 }
-ul, li {
+ul.horizontal, li {
 	list-style: none;
+}
+ul.horizontal > li {
+	display: inline-block;
 }
 header > nav > ul > li{
 	text-transform: uppercase;
-	display: inline-block;
 	padding: 41px 20px;
 	border-top: 1px solid transparent;
 }
