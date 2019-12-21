@@ -9,19 +9,19 @@
 	<link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-	<meta charset="utf-8">
+	<meta charset="UTF-8">
 </head>
 <body>
 	<header>
-		<div class="logo" >
+		<div class="logo">
 			<h1><span>A</span>lboTurbo<span style="color: red;">VPS</span></h1>
 			<p>VPS-at ma t'mire n'sheher</p>
 		</div>
 		<nav>
-			<ul>
-				<li onclick="this.children[0].click();"><a href="index.html">Home</a></li>
+			<ul class="horizontal">
+				<li onclick="this.children[0].click();"><a href="index.html" class="text-white">Home</a></li>
 				<li class="active"><a href="blog.html">Blog</a></li>
-				<li>Full Width</li>
+				<li>Pricing</li>
 				<li>
 				Services
 				<ul class="dropdown">
@@ -41,16 +41,21 @@
 		<div class="clear25"></div>
 		<div class="row">
 			<div class="col75">
+				<div>
+					<form action="./search.html" method="GET">
+						<input type="text" name="q" id="searchBox" style="height: 40px; width: 90%;" placeholder="Kerko artikuj">
+						<button type="submit" style="width: 9%; height: 46px;"><i class="fas fa-search"></i></button>
+					</form>
+				</div>
+				<h1>Të gjitha</h1>
 				<article id="thePost">
 					<h1 id="postTitle">loading</h1>
 					<p id="postContent">loading</p>
 				</article>
+				<ul style="text-align: right;" class="horizontal" id="pageNavigator">
+				</ul>
 			</div>
 			<div class="col25">
-				<h1>Kërko artikuj</h1>
-				<div>
-					<input type="text" style="width: 100%; padding: 10px 5px;" placeholder="Search">
-				</div>
 				<h1>Artikujt më të lexuar</h1>
 				<ul>
 					<li>Lorem</li>
@@ -107,7 +112,25 @@
 		<hr/>
 		<p>Copyright &copy; 2019 CompanyName</p>
 	</footer>
-
+	
+	<style type="text/css">
+		#pageNavigator > li {
+			margin: 10px;
+			border: 1px solid;
+			padding: 10px 0;
+		}
+		#pageNavigator > li.active {
+			background-color: #e2494b !important;
+		}
+		#pageNavigator a {
+			color: white;
+			padding: 10px;
+			text-decoration: none;
+		}
+		#pageNavigator > li {
+			background-color: #232425;
+		}
+	</style>
 	<script type="text/javascript">
 $(document).ready(function() { 
 	//footer latest blog posts
@@ -116,7 +139,7 @@ $(document).ready(function() {
 	var page = url.searchParams.get("page");
 	var postsPerPage = 5;
 	if(page == "" || page == undefined || page == null){
-		page = 0;
+		page = 1;
 	}
     $.getJSON('./blog.json', function(result) { 
     	if(id > result.length){
@@ -129,7 +152,7 @@ $(document).ready(function() {
             	$('#postContent').text(field.content);
             }
             else if(id == "" || id == undefined || id== null){
-            	if(i >= postsPerPage*page && i <= postsPerPage*(page+1)){
+            	if(i >= postsPerPage*(page-1) && i < postsPerPage*page){
 	            	if($('#postTitle').text() == "loading"){
 	            		$('#thePost').html('<h1><a href="blog.html?id=' + i + '">' + field.title  + '</a></h1>' + '<p>' + field.content.split(/\s+/).slice(0,20).join(" ") + '</p><hr/>');
 	            	}
@@ -141,6 +164,12 @@ $(document).ready(function() {
             $('#latestPosts').append('<article><h3>' + field.title + '</h3><p>' + field.content.split(/\s+/).slice(0,5).join(" ") + ' ...</p><a href="blog.html?id=' + i + '">Read more</a></article>');
             console.log("Posts loaded");
 	    });
+	    if(id == "" || id == undefined || id== null){
+	    	for(var i = 0; i < result.length/postsPerPage; i++){
+	    		console.log(page + " " + i);
+	    		$("#pageNavigator").append("<li " + ((page == i+1) ? "class=\"active\"" : "") + "><a href=\"?page=" + (i+1) + "\">"+(i+1)+"</a></li>");
+	    	}	
+	    }
 	}); 
 	//Hover
 	$('.dropdown').parent().hover(
