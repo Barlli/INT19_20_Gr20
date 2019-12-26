@@ -35,13 +35,17 @@
 .row > .col75 {
 	width: 74%;
 }
+.row > .col80 {
+	width: 74%;
+}
 .row > .col100 {
 	width: 100%;
 }
 .row > div[class*=" col"], .row > div[class^="col"]{
 	float: left;
+	min-height: 10px;
 }
-.col10 > * , .col20 > *, .col25 > *, .col50 > *, .col75 > *, .col100 > * {
+.col10 > * , .col20 > *, .col25 > *, .col50 > *, .col75 > *, .col80 > *, .col100 > * {
 	padding: 10px 20px;
 }
 .p0 {
