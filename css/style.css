@@ -1,143 +1,103 @@
-html, body, h1, h2, h3, h4, h5, h6, ul, section, p {
-	font-family: 'Roboto', sans-serif;
-	padding: 0;
-	margin: 0;
+/*--- Button ---*/
+.btn {
+	color: white;
+	border-radius: 5px;
+	border: 0px;
+	padding: 5px 15px;
+	text-transform: uppercase;
+	cursor: pointer;
+	padding: 6px 12px;
+	margin-top: 5px;
 }
-body {
-
-	background: whitesmoke;
+.btn-red {
+	background: #e2494b;
 }
-hr {
-	margin: 10px 20px;
+.btn-red:hover {
+	background: #d81d1f;
 }
-header {
-	background: #232425;
-	height: 100px;
+/* --- Rows and Columns ----*/
+.row {
 	display: inline-block;
 	width: 100%;
-	color: whitesmoke;
-	margin-bottom: -4px;
 }
-header .logo {
+.row > .col20 {
 	width: 20%;
-    float: left;
-    height:100px;
-    padding: 10px 0px 0px 40px;
 }
-header .logo h1 {
-	text-transform: uppercase;
+.row > .col10 {
+	width: 10%;
 }
-header .logo h1 span {
-	font-size: 40px;
+.row > .col25 {
+	width: 25%;
 }
-header nav {
-	width: 70%;
-	float: right;
+.row > .col50 {
+	width: 50%;	
+}
+.row > .col75 {
+	width: 74%;
+}
+.row > .col80 {
+	width: 74%;
+}
+.row > .col100 {
+	width: 100%;
+}
+.row > div[class*=" col"], .row > div[class^="col"]{
+	float: left;
+	min-height: 10px;
+}
+.col10 > * , .col20 > *, .col25 > *, .col50 > *, .col75 > *, .col80 > *, .col100 > * {
+	padding: 10px 20px;
+}
+.p0 {
+	padding: 0 !important;
+}
+.p1 {
+	padding: 1rem !important;
+}
+.p2 {
+	padding: 2rem !important;
+}
+.m0, .m-0 {
+	margin: 0 !important;
+}
+.m1 {
+	margin: 1rem !important;
+}
+.m2 {
+	margin: 2rem !important;
+}
+.m-1 {
+	margin: -1rem !important;
+}
+.m-2 {
+	margin: -2rem !important;
+}
+.clear10 {
+	height: 10px;
+	clear: both;
+}
+.clear20 {
+	height: 20px;
+	clear: both;
+}
+.clear25 {
+	height: 25px;
+	clear: both;
+}
+.clear50 {
+	height: 50px;
+	clear: both;
+}
+.clear100 {
 	height: 100px;
-	text-align: right;
-	overflow: hidden;
+	clear: both;
 }
-ul.horizontal, li {
-	list-style: none;
-}
-ul.horizontal > li {
-	display: inline-block;
-}
-header > nav > ul > li{
-	text-transform: uppercase;
-	padding: 41px 20px;
-	border-top: 1px solid transparent;
-}
-header li a {
-	text-decoration: none;
-}
-header > nav > ul > li:hover {
-	background: #e2494b;
-	cursor: pointer;
-	border-top: 1px solid red;
-}
-.dropdown {
-	display: none;	
-	position: absolute;
-}
-.dropdown:hover {
-}
-.dropdown li {
-	padding: 10px;
-	background: black;
-}
-.dropdown li:hover {
-	background: #e2494b;
-}
-nav a:visited {
-	color: whitesmoke;
-}
-header .active > a{
-	color: red;
-	text-shadow: 1px 1px 1px darkred;
-}
-header .active:hover > a {
-	color: whitesmoke;
-}
-section {
-	background: #1e1e1e;
-	color: #666666;
-	display: inline-block;
-}
-section h1 {
-	font-size: 65px;
-}
-
-.news article {
+.center {
 	text-align: center;
 }
-.news h1{
-	font-size: 30px;
-	text-transform: uppercase;
+.container {
+	padding: 0px 50px;
 }
-/*--- Footer ---*/
-footer form > input:not([type="submit"]), textarea {
-	background: #1e1e1e;
-	border: 0;
-	width: 100%;
-	margin: 5px;
-	padding: 5px;
-	border-radius: 5px;
-	outline: none;
-	color: white;
-}
-
-footer article {
-	border-bottom: 1px solid lightgrey;	
-}
-footer a {
-	color: #e2494b;
-	text-decoration: none;
-}
-footer a:hover {
-	color: #d81d1f;
-}
-footer a::after { 
-  content: " »";
-}
-footer li a::before { 
-  content: "» ";
-  color: grey;
-}
-footer article h3 {
-	color: #e2494b;
-}
-footer li a::after { 
-  content: "";
-}
-footer li {
-	padding: 5px;
-	border-bottom: 1px solid lightgrey;
-}
-.specifics > li {
-	padding: 20px 5px;
-	border-bottom: 1px solid lightgrey;
-}
-.col25 > article {
-	overflow: hidden;
+.text-white {
+	color: white !important;
 }
