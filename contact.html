@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Alboturbo</title>
+	<link rel="stylesheet" type="text/css" href="./css/style.css">
+	<link rel="stylesheet" type="text/css" href="./css/abkstack.css">
+	<link rel="stylesheet" type="text/css" href="./css/fontawesome/css/all.css">
+	<link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+	<meta charset="UTF-8">
+</head>
+<body>
+	<header>
+		<div class="logo">
+			<h1><span>A</span>lboTurbo<span style="color: red;">VPS</span></h1>
+			<p>VPS-at ma t'mire n'sheher</p>
+		</div>
+		<nav>
+			<ul class="horizontal">
+				<li onclick="this.children[0].click();"><a href="index.html" class="text-white">Home</a></li>
+				<li><a href="blog.html">Blog</a></li>
+				<li onclick="this.children[0].click();"><a href="index.html#pricing">Pricing</a></li>
+				<li>
+				Services
+				<ul class="dropdown">
+					<li>Windows Server</li>
+					<li>Linux Server</li>
+					<li>Email Server</li>
+					<li>Cloud Storage</li>
+				</ul>
+				</li>
+				<li class="active"><a href="contact.html">Contact us</a></li>
+				<li>Client Login</li>
+			</ul>
+		</nav>
+	</header>
+	<div class="clear25"></div>
+	<div class="row">
+		<div class="col50">
+		<form method="POST" action="#">
+			<input type="text" name="fullname" required="required" placeholder="Name">
+			<input type="email" name="email" required="required" placeholder="Email">
+			<input type="text" name="subject"  required="required" placeholder="Subject">
+			<textarea rows="5" placeholder="Message"></textarea><br/>
+			<input type="submit" class="btn btn-red">
+		</form>
+		</div>
+		<div class="col50">
+			<ul>
+				<li>facebook</li>
+				<li>twitter</li>
+				<li>email</li>
+				<li>phone</li>
+			</ul>
+		</div>
+		<div class="col100">
+			<address>adres</address>
+		</div>
+	</div>
+</body>
+<script type="text/javascript">
+$(document).ready(function() { 
+	//Hover
+	$('.dropdown').parent().hover(
+		function() {
+			$('.dropdown').css('display','block');
+		}, function() {
+			$('.dropdown').css('display','none');
+		}
+	);
+});
+</script>
+</html>
