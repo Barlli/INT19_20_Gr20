@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Alboturbo</title>
+	<link rel="stylesheet" type="text/css" href="./css/style.css">
+	<link rel="stylesheet" type="text/css" href="./css/abkstack.css">
+	<link rel="stylesheet" type="text/css" href="./css/fontawesome/css/all.css">
+	<link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+	<meta charset="UTF-8">
+	<style type="text/css">
+		form > input:not([type="submit"]):not([type="checkbox"]):not([type="radio"]), textarea {
+			background: #1e1e1e;
+			border: 0;
+			width: 100%;
+			margin: 5px;
+			padding: 5px;
+			border-radius: 5px;
+			outline: none;
+			color: white;
+		}
+		tr, td, th {
+			border: 1px solid;
+			padding: 10px;
+		}
+	</style>
+</head>
+<body>
+	<header>
+		<div class="logo">
+			<h1><span>A</span>lboTurbo<span style="color: red;">VPS</span></h1>
+			<p>VPS-at ma t'mire n'sheher</p>
+		</div>
+		<nav>
+			<ul class="horizontal">
+				<li onclick="this.children[0].click();"><a href="login.html">Logout</a></li>
+			</ul>
+		</nav>
+	</header>
+	<div class="clear25"></div>
+	<div class="container">
+		<h1>Mirësevini Filan Fisteku</h1>
+		<table border="1">
+			<tr>
+				<th>Nr.</th>
+				<th>Shërbimi</th>
+				<th>Statusi</th>
+				<th>Data e skadimit</th>
+			</tr>
+			<tr>
+				<td>1</td>
+				<td>Cloud Storage 500GB</td>
+				<td>Aktiv</td>
+				<td>17/01/2020</td>
+			</tr>
+			<tr>
+				<td>2</td>
+				<td>Linux Server Lvl 1</td>
+				<td>Aktiv</td>
+				<td>02/02/2020</td>
+			</tr>
+			<tr>
+				<td>3</td>
+				<td>Podcast Server</td>
+				<td>Pasiv</td>
+				<td>12/12/2020</td>
+			</tr>
+			<tr>
+				<td>4</td>
+				<td>SMTP Level 5</td>
+				<td>Aktiv</td>
+				<td>12/12/2020</td>
+			</tr>
+			<tr>
+				<td>5</td>
+				<td>Windows Server R2 2008</td>
+				<td>Aktiv</td>
+				<td>12/11/2020</td>
+			</tr>
+		</table>
+	</div>
+</body>
+<script type="text/javascript">
+$(document).ready(function() { 
+	//Hover
+	$('.dropdown').parent().hover(
+		function() {
+			$('.dropdown').css('display','block');
+		}, function() {
+			$('.dropdown').css('display','none');
+		}
+	);
+});
+</script>
+</html>
