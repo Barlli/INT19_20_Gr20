@@ -9,6 +9,18 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 	<meta charset="UTF-8">
+	<style type="text/css">
+		form > input:not([type="submit"]):not([type="checkbox"]):not([type="radio"]), textarea {
+			background: #1e1e1e;
+			border: 0;
+			width: 100%;
+			margin: 5px;
+			padding: 5px;
+			border-radius: 5px;
+			outline: none;
+			color: white;
+		}
+	</style>
 </head>
 <body>
 	<header>
@@ -19,7 +31,7 @@
 		<nav>
 			<ul class="horizontal">
 				<li onclick="this.children[0].click();"><a href="index.html" class="text-white">Home</a></li>
-				<li><a href="blog.html">Blog</a></li>
+				<li onclick="this.children[0].click();"><a href="blog.html">Blog</a></li>
 				<li onclick="this.children[0].click();"><a href="index.html#pricing">Pricing</a></li>
 				<li>
 				Services
@@ -31,32 +43,36 @@
 				</ul>
 				</li>
 				<li class="active"><a href="contact.html">Contact us</a></li>
-				<li>Client Login</li>
+				<li onclick="this.children[0].click();"><a href="login.html">Client Login</a></li>
 			</ul>
 		</nav>
 	</header>
 	<div class="clear25"></div>
+	<h1 class="center">Contact us</h1>
 	<div class="row">
+		<div class="col25"></div>
 		<div class="col50">
-		<form method="POST" action="#">
-			<input type="text" name="fullname" required="required" placeholder="Name">
-			<input type="email" name="email" required="required" placeholder="Email">
-			<input type="text" name="subject"  required="required" placeholder="Subject">
-			<textarea rows="5" placeholder="Message"></textarea><br/>
-			<input type="submit" class="btn btn-red">
-		</form>
-		</div>
-		<div class="col50">
+			<form method="POST" action="#">
+				<input type="text" name="fullname" style="width: 100%; padding: 10px 5px; margin-bottom: 5px;" required="required" placeholder="Name"><br/>
+				<input type="email" name="email" style="width: 100%; padding: 10px 5px; margin-bottom: 5px;" required="required" placeholder="Email"><br/>
+				<input type="text" name="subject" style="width: 100%; padding: 10px 5px; margin-bottom: 5px;"  required="required" placeholder="Subject"><br/>
+				<input type="radio" name="arsyeMbiKontaktin" style="cursor: pointer;" id="arsyeMbiKontaktin1" value="1"><label style="cursor: pointer;" for="arsyeMbiKontaktin1">Probleme teknike</label><br/>
+				<input type="radio" name="arsyeMbiKontaktin" style="cursor: pointer;" id="arsyeMbiKontaktin2" value="2"><label style="cursor: pointer;" for="arsyeMbiKontaktin2">Informata mbi produktet dhe çmimet</label><br/>
+				<input type="radio" name="arsyeMbiKontaktin" style="cursor: pointer;" id="arsyeMbiKontaktin3" value="3"><label style="cursor: pointer;" for="arsyeMbiKontaktin3">Sygjerime</label><br/>
+				<textarea rows="5" placeholder="Message"></textarea><br/>
+				<input style="float: left;" id="termsandcondition" type="checkbox" name="termsandcondition"><label for="termsandcondition" style="cursor: pointer;"><i>Duke klikuar butonin "Dërgo", ju pajtoheni me <a href="#">kushtet</a> e <abbr title="Alboturbo VPS">ATV</abbr></i></label> 
+				<input type="submit" style="width:100%; margin: 5px;" value="Dërgo" class="btn btn-red">
+			</form>
+			<h3>Kontaktet tjera</h3>
 			<ul>
-				<li>facebook</li>
-				<li>twitter</li>
-				<li>email</li>
-				<li>phone</li>
+				<li><a href="https://facebook.com/#">facebook</a></li>
+				<li><a href="https://twitter.com/#">twitter</a></li>
+				<li><a href="mailto:contact@alboturbo.vps">email</a></li>
+				<li><a href="tel://383-44-500-500">phone</a></li>
 			</ul>
+			<a href="https://www.google.com/maps/place/Fakulteti+Teknik/@42.6487946,21.164962,17z"><address>Fakulteti Teknik, Pristina, 10000, Republika e Kosovës</address></a>
 		</div>
-		<div class="col100">
-			<address>adres</address>
-		</div>
+		<div class="col25"></div>
 	</div>
 </body>
 <script type="text/javascript">
