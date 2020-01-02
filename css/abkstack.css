@@ -15,6 +15,24 @@
 .btn-red:hover {
 	background: #d81d1f;
 }
+.btn-blue {
+	background: #4986e2;
+}
+.btn-blue:hover {
+	background: #1d79d8;
+}
+.btn-green {
+	background: #17ca2c;
+}
+.btn-green:hover {
+	background: #13b927;
+}
+.btn-orange {
+	background: orange;
+}
+.btn-orange:hover {
+	background: #e89600;
+}
 /* --- Rows and Columns ----*/
 .row {
 	display: inline-block;
