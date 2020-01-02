@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Alboturbo</title>
+	<link rel="stylesheet" type="text/css" href="./css/style.css">
+	<link rel="stylesheet" type="text/css" href="./css/abkstack.css">
+	<link rel="stylesheet" type="text/css" href="./css/fontawesome/css/all.css">
+	<link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+	<meta charset="UTF-8">
+	<style type="text/css">
+		form > input:not([type="submit"]):not([type="checkbox"]):not([type="radio"]), textarea {
+			background: #1e1e1e;
+			border: 0;
+			width: 100%;
+			margin: 5px;
+			padding: 5px;
+			border-radius: 5px;
+			outline: none;
+			color: white;
+		}
+		tr, td, th {
+			border: 1px solid;
+			padding: 10px;
+		}
+		.btn > i {
+			margin-right: 5px;
+		}
+		#extraServices  li {
+			border-bottom: 1px solid;
+			padding: 10px;
+			cursor: grab;
+		}
+	</style>
+	<script type="text/javascript">
+		function allowDrop(ev) {
+  ev.preventDefault();
+}
+
+function drag(ev) {
+  ev.dataTransfer.setData("text", ev.target.id);
+}
+
+function drop(ev) {
+  ev.preventDefault();
+  var data = ev.dataTransfer.getData("text");
+  ev.target.appendChild(document.getElementById(data));
+}
+
+	function addToCart(i){
+		$("#shportaElements").append("<p>" +  $(i).prev().text() + "</p>");
+	}
+	</script>
+</head>
+<body>
+	<header>
+		<div class="logo">
+			<h1><span>A</span>lboTurbo<span style="color: red;">VPS</span></h1>
+			<p>VPS-at ma t'mire n'sheher</p>
+		</div>
+		<nav>
+			<ul class="horizontal">
+				<li onclick="this.children[0].click();"><a href="login.html">Logout&nbsp;&nbsp;<i class="fas fa-sign-out-alt"></i></a></li>
+			</ul>
+		</nav>
+	</header>
+	<div class="clear25"></div>
+	<div class="container">
+		<div style="background: #f1f1f1; border: 1px solid lightgrey; margin-bottom: 50px; border-radius: 10px; padding: 10px; box-shadow: 1px 1px 5px #cecece;">
+			<h1>MERR SHËRBIM TË RI</h1>
+			<div class="clear50"></div>
+			<div class="row">
+				<div class="col75" style="border-right: 1px solid grey; height: auto;">
+					<ol>
+						<li>
+							<div style="height: auto; padding:10px; background: #0089ab;">
+								<i style="background: #57b1c8;border-radius: 50%; border: 20px solid #57b1c8;" class="fab fa-windows fa-3x text-white"></i>
+								<h3 class="text-white" style="margin-left: 10px; display: inline-block"><span>Windows Servers</span>
+									<button class="btn btn-orange" onclick="addToCart(this);">Shtoje në shportë</button>
+								</h3>
+							</div>
+						</li>
+						<li>
+							<div style="height: auto; padding:10px; background: #DD4814;">
+								<i style="background: #ff7545; border-radius: 50%; border: 20px solid #ff7545;" class="fab fa-linux fa-3x text-white"></i>
+								<h3 class="text-white" style="margin-left: 10px; display: inline-block"><span>Linux Servers</span>
+									<button class="btn btn-orange" onclick="addToCart(this);">Shtoje në shportë</button>
+								</h3>
+							</div>
+						</li>
+						<li>
+							<div style="height: auto; padding:10px; background: #0b62a0;">
+								<i style="background: #057cd2; border-radius: 50%; border: 20px solid #057cd2;" class="fas fa-envelope fa-3x text-white"></i>
+								<h3 class="text-white" style="margin-left: 10px; display: inline-block"><span>Cloud Storage</span>
+									<button class="btn btn-orange" onclick="addToCart(this);">Shtoje në shportë</button>
+								</h3>
+							</div>
+						</li>
+						<li>
+							<div style="height: auto; padding:10px; background: purple;">
+								<i style="background: #bf0bbf; border-radius: 50%; border: 20px solid #bf0bbf;" class="fab fa-linux fa-3x text-white"></i>
+								<h3 class="text-white" style="margin-left: 10px; display: inline-block"><span>SMTP Server</span>
+									<button class="btn btn-orange" onclick="addToCart(this);">Shtoje në shportë</button>
+								</h3>
+							</div>
+						</li>
+					</ol>
+					<h4>Shërbime ekstra (Tërhiqi në shportë)</h4>
+					<ul id="extraServices" style="border: 1px dashed;">
+						<li>
+							<div ondrop="drop(event)" ondragover="allowDrop(event)">
+								<div draggable="true" ondragstart="drag(event)" id="extraElement1">500GB SSD</div>
+							</div>
+						</li>
+						<li>
+							<div ondrop="drop(event)" ondragover="allowDrop(event)">
+								<div draggable="true" ondragstart="drag(event)" id="extraElement2">2xCPU Xeon</div>
+							</div>
+						</li>
+						<li>
+							<div ondrop="drop(event)" ondragover="allowDrop(event)">
+								<div draggable="true" ondragstart="drag(event)" id="extraElement3">Multiple IP Address</div>
+							</div>
+						</li>
+						<li>
+							<div ondrop="drop(event)" ondragover="allowDrop(event)">
+								<div draggable="true" ondragstart="drag(event)" id="extraElement4">Firewall</div>
+							</div>
+						</li>
+					</ul>
+				</div>
+				<div class="col25">
+					<div id="shporta" style="overflow-y: scroll;">
+						<h3>Shporta</h3>
+						<div id="shportaElements" style="border: 1px dashed; min-height: 100px; height: auto;" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+					</div>
+					<button class="btn btn-orange" style="width: 100%;">Shtoni në shportë</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+<script type="text/javascript">
+$(document).ready(function() { 
+	//Hover
+	$('.dropdown').parent().hover(
+		function() {
+			$('.dropdown').css('display','block');
+		}, function() {
+			$('.dropdown').css('display','none');
+		}
+	);
+	$("#shporta").css("height", $($(".container").children()[0]).height() - 150 + "px");
+});
+</script>
+</html>
