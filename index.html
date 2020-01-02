@@ -20,7 +20,7 @@
 			<ul class="horizontal">
 				<li class="active"><a href="index.html">Home</a></li>
 				<li onclick="this.children[0].click();"><a href="blog.html" class="text-white">Blog</a></li>
-				<li>Pricing</li>
+				<li id="navPricing">Pricing</li>
 				<li>
 				Services
 				<ul class="dropdown">
@@ -30,12 +30,12 @@
 					<li>Cloud Storage</li>
 				</ul>
 				</li>
-				<li>Contact us</li>
-				<li>Client Login</li>
+				<li onclick="this.children[0].click();"><a href="contact.html">Contact us</a></li>
+				<li onclick="this.children[0].click();"><a href="login.html" class="text-white">Client Login</a></li>
 			</ul>
 		</nav>
 	</header>
-	<section style="height: calc(100vh - 100px);">
+	<section style="min-height: calc(100vh - 100px);  overflow: hidden; width: 100%;">
 		<div style="width: 45%; float: left;">
 			<div style="padding: 50px;">
 				<h1>Lorem ipsum dolor sit</h1>
@@ -44,12 +44,12 @@
 			</div>
 		</div>
 		<div style="width:50%; text-align: center; float: right;">
-			<div style="padding: 50px;">
-			<img src="./images/server.png" style="width: 250px;">
+			<div style="padding: 50px 100px;">
+			<img src="./images/server.png">
 			</div>
 		</div>	
 	</section>
-	<div class="news">
+	<div class="pricing">
 		<div class="row text-white">
 			<div class="col25">
 				<article style="background:#0089ab;">
@@ -202,12 +202,22 @@ $(document).ready(function() {
 	//Hover
 	$('.dropdown').parent().hover(
 		function() {
-			$('.dropdown').css('display','inline-block');
+			$('.dropdown').css('display','block');
 		}, function() {
 			$('.dropdown').css('display','none');
 		}
 	);
-}); 
+	if(window.location.href.includes("#pricing")){
+		$('html, body').animate({scrollTop: $('.pricing').offset().top}, 1000);
+	} 
+
+});
+$("#navPricing").click(function(){
+	$('html, body').animate({scrollTop: $('.pricing').offset().top}, 1000);
+	if(!window.location.href.includes("#pricing")){
+		window.location.href = window.location.href + "#pricing";
+	} 
+});
 	</script>
 </body>
 </html>
