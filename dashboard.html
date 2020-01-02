@@ -24,6 +24,9 @@
 			border: 1px solid;
 			padding: 10px;
 		}
+		.btn > i {
+			margin-right: 5px;
+		}
 	</style>
 </head>
 <body>
@@ -34,49 +37,84 @@
 		</div>
 		<nav>
 			<ul class="horizontal">
-				<li onclick="this.children[0].click();"><a href="login.html">Logout</a></li>
+				<li onclick="this.children[0].click();"><a href="login.html">Logout&nbsp;&nbsp;<i class="fas fa-sign-out-alt"></i></a></li>
 			</ul>
 		</nav>
 	</header>
 	<div class="clear25"></div>
 	<div class="container">
 		<h1>Mirësevini Filan Fisteku</h1>
-		<table border="1">
+		<div class="clear50"></div>
+		<a href="order.html"><button class="btn btn-red"><i class="fas fa-shopping-cart"></i>Merr shërbim të ri</button></a>
+		<button class="btn btn-blue"><i class="fas fa-clock"></i>Vazhdo afatin e shërbimeve</button>
+		<h3>Shërbimet tuaja</h3>
+		<table style="width: 100%;" border="1">
 			<tr>
 				<th>Nr.</th>
 				<th>Shërbimi</th>
 				<th>Statusi</th>
 				<th>Data e skadimit</th>
+				<th>Konfiguro</th>
 			</tr>
 			<tr>
 				<td>1</td>
 				<td>Cloud Storage 500GB</td>
 				<td>Aktiv</td>
 				<td>17/01/2020</td>
+				<td>
+					<button class="btn btn-red" onclick="setStatus(1, 'Aktiv')"><i class="fas fa-play"></i>Start</button>
+					<button class="btn btn-blue" onclick="setStatus(1, 'Pasiv')"><i class="fas fa-stop"></i>Stop</button>
+					<button class="btn btn-green" onclick="setStatus(1, 'Aktiv')"><i class="fas fa-redo-alt"></i>Reboot</button>
+					<button class="btn btn-orange"><i class="fas fa-cog"></i>Configure</button>
+				</td>
 			</tr>
 			<tr>
 				<td>2</td>
 				<td>Linux Server Lvl 1</td>
 				<td>Aktiv</td>
 				<td>02/02/2020</td>
+				<td>
+					<button class="btn btn-red" onclick="setStatus(2, 'Aktiv')"><i class="fas fa-play"></i>Start</button>
+					<button class="btn btn-blue" onclick="setStatus(2, 'Pasiv')"><i class="fas fa-stop"></i>Stop</button>
+					<button class="btn btn-green" onclick="setStatus(2, 'Aktiv')"><i class="fas fa-redo-alt"></i>Reboot</button>
+					<button class="btn btn-orange"><i class="fas fa-cog"></i>Configure</button>
+				</td>
 			</tr>
 			<tr>
 				<td>3</td>
 				<td>Podcast Server</td>
 				<td>Pasiv</td>
 				<td>12/12/2020</td>
+				<td>
+					<button class="btn btn-red" onclick="setStatus(3, 'Aktiv')"><i class="fas fa-play"></i>Start</button>
+					<button class="btn btn-blue" onclick="setStatus(3, 'Pasiv')"><i class="fas fa-stop"></i>Stop</button>
+					<button class="btn btn-green" onclick="setStatus(3, 'Aktiv')"><i class="fas fa-redo-alt"></i>Reboot</button>
+					<button class="btn btn-orange"><i class="fas fa-cog"></i>Configure</button>
+				</td>
 			</tr>
 			<tr>
 				<td>4</td>
 				<td>SMTP Level 5</td>
 				<td>Aktiv</td>
 				<td>12/12/2020</td>
+				<td>
+					<button class="btn btn-red" onclick="setStatus(4, 'Aktiv')"><i class="fas fa-play"></i>Start</button>
+					<button class="btn btn-blue" onclick="setStatus(4, 'Pasiv')"><i class="fas fa-stop"></i>Stop</button>
+					<button class="btn btn-green" onclick="setStatus(4, 'Aktiv')"><i class="fas fa-redo-alt"></i>Reboot</button>
+					<button class="btn btn-orange"><i class="fas fa-cog"></i>Configure</button>
+				</td>
 			</tr>
 			<tr>
 				<td>5</td>
 				<td>Windows Server R2 2008</td>
 				<td>Aktiv</td>
 				<td>12/11/2020</td>
+				<td>
+					<button class="btn btn-red" onclick="setStatus(5, 'Aktiv')"><i class="fas fa-play"></i>Start</button>
+					<button class="btn btn-blue" onclick="setStatus(5, 'Pasiv')"><i class="fas fa-stop"></i>Stop</button>
+					<button class="btn btn-green" onclick="setStatus(5, 'Aktiv')"><i class="fas fa-redo-alt"></i>Reboot</button>
+					<button class="btn btn-orange"><i class="fas fa-cog"></i>Configure</button>
+				</td>
 			</tr>
 		</table>
 	</div>
@@ -92,5 +130,24 @@ $(document).ready(function() {
 		}
 	);
 });
+function setStatus(i, state){
+	if (typeof(Storage) == "undefined") 
+		return;
+	if(i-1 > $("table").children().children().length){
+		console.log("invalid i");
+		return;
+	}
+	localStorage.setItem("sherbimi" + i + "_status", state);
+	$($($($("table").children().children()[i])[0]).children()[2]).text(localStorage.getItem("sherbimi" + i + "_status"));
+}
+if (typeof(Storage) !== "undefined") {
+	localStorage.setItem("sherbimi1_status", "Aktiv");
+	localStorage.setItem("sherbimi2_status", "Aktiv");
+	localStorage.setItem("sherbimi3_status", "Pasiv");
+	localStorage.setItem("sherbimi4_status", "Aktiv");
+	localStorage.setItem("sherbimi5_status", "Aktiv");
+} else {
+	console.log("Browseri nuk e perkrah localStorage/sessionStorage");
+}
 </script>
 </html>
