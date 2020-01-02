@@ -19,8 +19,8 @@
 		<nav>
 			<ul class="horizontal">
 				<li onclick="this.children[0].click();"><a href="index.html" class="text-white">Home</a></li>
-				<li class="active"><a href="blog.html">Blog</a></li>
-				<li>Pricing</li>
+				<li onclick="this.children[0].click();" class="active"><a href="blog.html">Blog</a></li>
+				<li onclick="this.children[0].click();"><a href="index.html#pricing">Pricing</a></li>
 				<li>
 				Services
 				<ul class="dropdown">
@@ -30,8 +30,8 @@
 					<li>Cloud Storage</li>
 				</ul>
 				</li>
-				<li>Contact us</li>
-				<li>Client Login</li>
+				<li onclick="this.children[0].click();"><a href="contact.html">Contact us</a></li>
+				<li onclick="this.children[0].click();"><a href="login.html">Client Login</a></li>
 			</ul>
 		</nav>
 	</header>
@@ -55,8 +55,8 @@
 				</ul>
 			</div>
 			<div class="col25">
-				<h1>Artikujt më të lexuar</h1>
-				<ul>
+				<h1>Artikujt të rekomanduar</h1>
+				<ul id="recommendedArticles">
 					<li>Lorem</li>
 					<li>Impsum</li>
 					<li>Lorem</li>
@@ -74,7 +74,7 @@
 		<div class="row">
 			<div class="col25">
 				<h1>About us</h1>
-				<img src="./images/milingona.gif"/>
+				<img src="./images/milingona.gif" alt="Alboturbo VPS logo"/>
 				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem magnam eligendi assumenda animi voluptates reprehenderit eum repudiandae expedita excepturi officia? Incidunt temporibus rem praesentium vel quaerat, libero accusamus cum delectus.</p>
 				<a href="#">Read more</a>
 			</div>
@@ -137,9 +137,11 @@ $(document).ready(function() {
 	var query = url.searchParams.get("q").toLowerCase();
 	var subqueries = query.split(" ");
 	var totalFound = 0;
+	var recommendedArticles = [Math.random()];
     $.getJSON('./blog.json', function(result) { 
 	    $.each(result, function(i, field){
-
+    	   	if(i < 4)
+            $('#latestPosts').append('<article><h3>' + field.title + '</h3><p>' + field.content.split(/\s+/).slice(0,5).join(" ") + ' ...</p><a href="blog.html?id=' + i + '">Read more</a></article>');
 	    	var howManyWordsAreIn = 0;
 	    	for(var j = 0; j < subqueries.length; j++){
 	    		if(field.title.toLowerCase().includes(subqueries[j]) || field.content.toLowerCase().includes(subqueries[j])){
@@ -164,7 +166,7 @@ $(document).ready(function() {
 	//Hover
 	$('.dropdown').parent().hover(
 		function() {
-			$('.dropdown').css('display','inline-block');
+			$('.dropdown').css('display','block');
 		}, function() {
 			$('.dropdown').css('display','none');
 		}
