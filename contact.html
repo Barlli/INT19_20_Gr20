@@ -59,8 +59,9 @@
 				<input type="radio" name="arsyeMbiKontaktin" style="cursor: pointer;" id="arsyeMbiKontaktin1" value="1"><label style="cursor: pointer;" for="arsyeMbiKontaktin1">Probleme teknike</label><br/>
 				<input type="radio" name="arsyeMbiKontaktin" style="cursor: pointer;" id="arsyeMbiKontaktin2" value="2"><label style="cursor: pointer;" for="arsyeMbiKontaktin2">Informata mbi produktet dhe çmimet</label><br/>
 				<input type="radio" name="arsyeMbiKontaktin" style="cursor: pointer;" id="arsyeMbiKontaktin3" value="3"><label style="cursor: pointer;" for="arsyeMbiKontaktin3">Sygjerime</label><br/>
+				<input type="radio" name="arsyeMbiKontaktin" style="cursor: pointer;" id="arsyeMbiKontaktin4" value="3"><label style="cursor: pointer;" for="arsyeMbiKontaktin4">Të tjera</label><br/>
 				<textarea rows="5" placeholder="Message"></textarea><br/>
-				<input style="float: left;" id="termsandcondition" type="checkbox" name="termsandcondition"><label for="termsandcondition" style="cursor: pointer;"><i>Duke klikuar butonin "Dërgo", ju pajtoheni me <a href="#">kushtet</a> e <abbr title="Alboturbo VPS">ATV</abbr></i></label> 
+				<input style="float: left;" id="termsandcondition" type="checkbox" name="termsandcondition"><label for="termsandcondition" style="cursor: pointer;"><i>Duke klikuar butonin "Dërgo", ju pajtoheni me <a href="#">kushtet</a> e <abbr title="AlboTurbo Vps"></abbr></i></label> 
 				<input type="submit" style="width:100%; margin: 5px;" value="Dërgo" class="btn btn-red">
 			</form>
 			<h3>Kontaktet tjera</h3>
@@ -70,13 +71,13 @@
 				<li><a href="mailto:contact@alboturbo.vps">email</a></li>
 				<li><a href="tel://383-44-500-500">phone</a></li>
 			</ul>
-			<a href="https://www.google.com/maps/place/Fakulteti+Teknik/@42.6487946,21.164962,17z"><address>Fakulteti Teknik, Pristina, 10000, Republika e Kosovës</address></a>
+			<a href="https://www.google.com/maps/place/Fakulteti+Teknik/@42.6487946,21.164962,17z"><address>Fakulteti Teknik, Pristina, 10000, Republika e Kosov&euml;s</address></a>
 		</div>
 		<div class="col25"></div>
 	</div>
 </body>
 <script type="text/javascript">
-$(document).ready(function() { 
+$(document).ready(function() {
 	//Hover
 	$('.dropdown').parent().hover(
 		function() {
@@ -85,6 +86,11 @@ $(document).ready(function() {
 			$('.dropdown').css('display','none');
 		}
 	);
+	var abbr = $("abbr");
+	var regex = /[A-Z]/g;
+	for(var i = 0; i < abbr.length; i++){
+		$(abbr[i]).text(($(abbr[i]).attr("title").match(regex)).join(' ').replace(/ /g,""));
+	}
 });
 </script>
 </html>
