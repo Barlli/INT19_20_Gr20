@@ -34,7 +34,8 @@
 		}
 	</style>
 	<script type="text/javascript">
-		function allowDrop(ev) {
+var cmimi = 0;
+function allowDrop(ev) {
   ev.preventDefault();
 }
 
@@ -46,11 +47,16 @@ function drop(ev) {
   ev.preventDefault();
   var data = ev.dataTransfer.getData("text");
   ev.target.appendChild(document.getElementById(data));
+  cmimi += 5;
+  $("#cmimi").text(cmimi);
 }
 
-	function addToCart(i){
-		$("#shportaElements").append("<p>" +  $(i).prev().text() + "</p>");
-	}
+function addToCart(i){
+	$("#shportaElements").append("<p>" +  $(i).prev().text() + "</p>");
+	console.log($(i).parent().next().text());
+	cmimi += parseFloat($(i).parent().next().text());
+	$("#cmimi").text(cmimi);
+}
 	</script>
 </head>
 <body>
@@ -68,10 +74,12 @@ function drop(ev) {
 	<div class="clear25"></div>
 	<div class="container">
 		<div style="background: #f1f1f1; border: 1px solid lightgrey; margin-bottom: 50px; border-radius: 10px; padding: 10px; box-shadow: 1px 1px 5px #cecece;">
-			<h1>MERR SHËRBIM TË RI</h1>
-			<div class="clear50"></div>
 			<div class="row">
 				<div class="col75" style="border-right: 1px solid grey; height: auto;">
+					<svg width="100" height="100" style="margin-bottom: -80px; z-index: -1;">
+					  <circle cx="50" cy="50" r="40" stroke="#0038b5" stroke-width="4" fill="#0038b5" />
+					</svg>
+					<h1>MERR SH&Euml;RBIM TË RI</h1>
 					<ol>
 						<li>
 							<div style="height: auto; padding:10px; background: #0089ab;">
@@ -79,6 +87,7 @@ function drop(ev) {
 								<h3 class="text-white" style="margin-left: 10px; display: inline-block"><span>Windows Servers</span>
 									<button class="btn btn-orange" onclick="addToCart(this);">Shtoje në shportë</button>
 								</h3>
+								<p>30€/muaj</p>
 							</div>
 						</li>
 						<li>
@@ -87,6 +96,7 @@ function drop(ev) {
 								<h3 class="text-white" style="margin-left: 10px; display: inline-block"><span>Linux Servers</span>
 									<button class="btn btn-orange" onclick="addToCart(this);">Shtoje në shportë</button>
 								</h3>
+								<p>20€/muaj</p>
 							</div>
 						</li>
 						<li>
@@ -95,6 +105,7 @@ function drop(ev) {
 								<h3 class="text-white" style="margin-left: 10px; display: inline-block"><span>Cloud Storage</span>
 									<button class="btn btn-orange" onclick="addToCart(this);">Shtoje në shportë</button>
 								</h3>
+								<p>5€/muaj</p>
 							</div>
 						</li>
 						<li>
@@ -103,10 +114,11 @@ function drop(ev) {
 								<h3 class="text-white" style="margin-left: 10px; display: inline-block"><span>SMTP Server</span>
 									<button class="btn btn-orange" onclick="addToCart(this);">Shtoje në shportë</button>
 								</h3>
+								<p>5€/muaj</p>
 							</div>
 						</li>
 					</ol>
-					<h4>Shërbime ekstra (Tërhiqi në shportë)</h4>
+					<h4>Shërbime ekstra (Tërhiqi në shportë) +5€/shërbim</h4>
 					<ul id="extraServices" style="border: 1px dashed;">
 						<li>
 							<div ondrop="drop(event)" ondragover="allowDrop(event)">
@@ -135,10 +147,12 @@ function drop(ev) {
 						<h3>Shporta</h3>
 						<div id="shportaElements" style="border: 1px dashed; min-height: 100px; height: auto;" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
 					</div>
+					<label>&Ccedil;mimi: </label><output name="cmimi" id="cmimi"></output>
 					<button class="btn btn-orange" style="width: 100%;">Shtoni në shportë</button>
 				</div>
 			</div>
 		</div>
+		<p id="mesazhi"></p>
 	</div>
 </body>
 <script type="text/javascript">
@@ -152,6 +166,16 @@ $(document).ready(function() {
 		}
 	);
 	$("#shporta").css("height", $($(".container").children()[0]).height() - 150 + "px");
+	$("#mesazhi").text("IP " + getIP() + " tuaja regjistrohen për shkaqe sigurie");
 });
+
+function getIP(){
+  var IP;
+  $.ajaxSetup({async: false});
+  $.get('https://api.ipify.org?format=json', function(e){ 
+    IP = e.ip; 
+  });
+  return IP;
+}
 </script>
 </html>
