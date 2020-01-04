@@ -53,16 +53,16 @@
 		<div class="col25"></div>
 		<div class="col50">
 			<form method="POST" action="#">
-				<input type="text" name="fullname" style="width: 100%; padding: 10px 5px; margin-bottom: 5px;" required="required" placeholder="Name"><br/>
-				<input type="email" name="email" style="width: 100%; padding: 10px 5px; margin-bottom: 5px;" required="required" placeholder="Email"><br/>
-				<input type="text" name="subject" style="width: 100%; padding: 10px 5px; margin-bottom: 5px;"  required="required" placeholder="Subject"><br/>
-				<input type="radio" name="arsyeMbiKontaktin" style="cursor: pointer;" id="arsyeMbiKontaktin1" value="1"><label style="cursor: pointer;" for="arsyeMbiKontaktin1">Probleme teknike</label><br/>
-				<input type="radio" name="arsyeMbiKontaktin" style="cursor: pointer;" id="arsyeMbiKontaktin2" value="2"><label style="cursor: pointer;" for="arsyeMbiKontaktin2">Informata mbi produktet dhe çmimet</label><br/>
-				<input type="radio" name="arsyeMbiKontaktin" style="cursor: pointer;" id="arsyeMbiKontaktin3" value="3"><label style="cursor: pointer;" for="arsyeMbiKontaktin3">Sygjerime</label><br/>
-				<input type="radio" name="arsyeMbiKontaktin" style="cursor: pointer;" id="arsyeMbiKontaktin4" value="3"><label style="cursor: pointer;" for="arsyeMbiKontaktin4">Të tjera</label><br/>
+				<input autocomplete="on" type="text" name="fullname" style="width: 100%; padding: 10px 5px; margin-bottom: 5px;" required="required" placeholder="Name"><br/>
+				<input autocomplete="on" type="email" name="email" style="width: 100%; padding: 10px 5px; margin-bottom: 5px;" required="required" placeholder="Email"><br/>
+				<input autocomplete="on" type="text" name="subject" style="width: 100%; padding: 10px 5px; margin-bottom: 5px;"  required="required" placeholder="Subject"><br/>
+				<input autocomplete="on" type="radio" name="arsyeMbiKontaktin" style="cursor: pointer;" id="arsyeMbiKontaktin1" value="1"><label style="cursor: pointer;" for="arsyeMbiKontaktin1">Probleme teknike</label><br/>
+				<input autocomplete="on" type="radio" name="arsyeMbiKontaktin" style="cursor: pointer;" id="arsyeMbiKontaktin2" value="2"><label style="cursor: pointer;" for="arsyeMbiKontaktin2">Informata mbi produktet dhe çmimet</label><br/>
+				<input autocomplete="on" type="radio" name="arsyeMbiKontaktin" style="cursor: pointer;" id="arsyeMbiKontaktin3" value="3"><label style="cursor: pointer;" for="arsyeMbiKontaktin3">Sygjerime</label><br/>
+				<input autocomplete="on" type="radio" name="arsyeMbiKontaktin" style="cursor: pointer;" id="arsyeMbiKontaktin4" value="3"><label style="cursor: pointer;" for="arsyeMbiKontaktin4">Të tjera</label><br/>
 				<textarea rows="5" placeholder="Message"></textarea><br/>
-				<input style="float: left;" id="termsandcondition" type="checkbox" name="termsandcondition"><label for="termsandcondition" style="cursor: pointer;"><i>Duke klikuar butonin "Dërgo", ju pajtoheni me <a href="#">kushtet</a> e <abbr title="AlboTurbo Vps"></abbr></i></label> 
-				<input type="submit" style="width:100%; margin: 5px;" value="Dërgo" class="btn btn-red">
+				<input autocomplete="on" style="float: left;" id="termsandcondition" type="checkbox" name="termsandcondition"><label for="termsandcondition" style="cursor: pointer;"><i>Duke klikuar butonin "Dërgo", ju pajtoheni me <a href="termsandconditions.txt">kushtet</a> e <abbr title="AlboTurbo Vps"></abbr></i></label> 
+				<input autocomplete="on" type="submit" style="width:100%; margin: 5px;" value="Dërgo" class="btn btn-red">
 			</form>
 			<h3>Kontaktet tjera</h3>
 			<ul>
@@ -74,6 +74,9 @@
 			<a href="https://www.google.com/maps/place/Fakulteti+Teknik/@42.6487946,21.164962,17z"><address>Fakulteti Teknik, Pristina, 10000, Republika e Kosov&euml;s</address></a>
 		</div>
 		<div class="col25"></div>
+	</div>
+	<div class="clear10">
+		<canvas id="footerCanvas" height="100" width="200" style="width: 100%; height: 10px;">
 	</div>
 </body>
 <script type="text/javascript">
@@ -91,6 +94,19 @@ $(document).ready(function() {
 	for(var i = 0; i < abbr.length; i++){
 		$(abbr[i]).text(($(abbr[i]).attr("title").match(regex)).join(' ').replace(/ /g,""));
 	}
+
+	//footer Canvas
+	var c = document.getElementById("footerCanvas");
+	var ctx = c.getContext("2d");
+
+	// Create gradient
+	var grd = ctx.createLinearGradient(0,0,200,0);
+	grd.addColorStop(0,"red");
+	grd.addColorStop(1,"white");
+
+	// Fill with gradient
+	ctx.fillStyle = grd;
+	ctx.fillRect(10,10,150,80);
 });
 </script>
 </html>
