@@ -119,3 +119,9 @@
 .text-white {
 	color: white !important;
 }
+p {
+	word-wrap: break-word;
+}
+.row * {
+	word-wrap: break-word;
+}
