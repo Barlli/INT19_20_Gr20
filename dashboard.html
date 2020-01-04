@@ -43,12 +43,16 @@
 	</header>
 	<div class="clear25"></div>
 	<div class="container">
-		<h1>Mirësevini Filan Fisteku</h1>
+		<div style="margin-top: -40px; margin-left: -80px;">
+		<canvas id="kanvasi" width="300" height="150" style="position: absolute; z-index: -1;"></canvas>
+		</div>
+		<div class="clear50"></div>
+		<h1 style="text-shadow: -1px -1px 5px whitesmoke; color: #232425;">Mirësevini Filan Fisteku</h1>
 		<div class="clear50"></div>
 		<a href="order.html"><button class="btn btn-red"><i class="fas fa-shopping-cart"></i>Merr shërbim të ri</button></a>
 		<button class="btn btn-blue"><i class="fas fa-clock"></i>Vazhdo afatin e shërbimeve</button>
 		<h3>Shërbimet tuaja</h3>
-		<table style="width: 100%;" border="1">
+		<table style="width: 100%;" border="1"  cellspacing="0" cellpadding="0">
 			<tr>
 				<th>Nr.</th>
 				<th>Shërbimi</th>
@@ -59,7 +63,7 @@
 			<tr>
 				<td>1</td>
 				<td>Cloud Storage 500GB</td>
-				<td>Aktiv</td>
+				<td style="background: lightgreen;">Aktiv</td>
 				<td>17/01/2020</td>
 				<td>
 					<button class="btn btn-red" onclick="setStatus(1, 'Aktiv')"><i class="fas fa-play"></i>Start</button>
@@ -71,7 +75,7 @@
 			<tr>
 				<td>2</td>
 				<td>Linux Server Lvl 1</td>
-				<td>Aktiv</td>
+				<td style="background: lightgreen;">Aktiv</td>
 				<td>02/02/2020</td>
 				<td>
 					<button class="btn btn-red" onclick="setStatus(2, 'Aktiv')"><i class="fas fa-play"></i>Start</button>
@@ -83,7 +87,7 @@
 			<tr>
 				<td>3</td>
 				<td>Podcast Server</td>
-				<td>Pasiv</td>
+				<td style="background: red; color: white;">Pasiv</td>
 				<td>12/12/2020</td>
 				<td>
 					<button class="btn btn-red" onclick="setStatus(3, 'Aktiv')"><i class="fas fa-play"></i>Start</button>
@@ -95,7 +99,7 @@
 			<tr>
 				<td>4</td>
 				<td>SMTP Level 5</td>
-				<td>Aktiv</td>
+				<td style="background: lightgreen;">Aktiv</td>
 				<td>12/12/2020</td>
 				<td>
 					<button class="btn btn-red" onclick="setStatus(4, 'Aktiv')"><i class="fas fa-play"></i>Start</button>
@@ -107,7 +111,7 @@
 			<tr>
 				<td>5</td>
 				<td>Windows Server R2 2008</td>
-				<td>Aktiv</td>
+				<td style="background: lightgreen;">Aktiv</td>
 				<td>12/11/2020</td>
 				<td>
 					<button class="btn btn-red" onclick="setStatus(5, 'Aktiv')"><i class="fas fa-play"></i>Start</button>
@@ -129,6 +133,13 @@ $(document).ready(function() {
 			$('.dropdown').css('display','none');
 		}
 	);
+	//canvas
+	var c = document.getElementById("kanvasi");
+	var ctx = c.getContext("2d");
+	ctx.beginPath();
+	ctx.arc(100, 75, 50, 0, 2 * Math.PI);
+	ctx.fillStyle = "#0038b5";
+	ctx.fill();
 });
 function setStatus(i, state){
 	if (typeof(Storage) == "undefined") 
@@ -138,14 +149,26 @@ function setStatus(i, state){
 		return;
 	}
 	localStorage.setItem("sherbimi" + i + "_status", state);
-	$($($($("table").children().children()[i])[0]).children()[2]).text(localStorage.getItem("sherbimi" + i + "_status"));
+	$($($($("table").children().children()[i])[0]).children()[2]).text(localStorage.getItem("sherbimi" + i + "_status")).css({"background":(state == "Aktiv" ? "lightgreen" : "red"), "color": (state == "Aktiv" ? "black" : "white")});
 }
 if (typeof(Storage) !== "undefined") {
-	localStorage.setItem("sherbimi1_status", "Aktiv");
-	localStorage.setItem("sherbimi2_status", "Aktiv");
-	localStorage.setItem("sherbimi3_status", "Pasiv");
-	localStorage.setItem("sherbimi4_status", "Aktiv");
-	localStorage.setItem("sherbimi5_status", "Aktiv");
+	if(localStorage.getItem("sherbimi1_status") == null)
+		localStorage.setItem("sherbimi1_status", "Aktiv");
+	else if(localStorage.getItem("sherbimi2_status") == null)
+		localStorage.setItem("sherbimi2_status", "Aktiv");
+	else if(localStorage.getItem("sherbimi3_status") == null)
+		localStorage.setItem("sherbimi3_status", "Pasiv");
+	else if(localStorage.getItem("sherbimi4_status") == null)
+		localStorage.setItem("sherbimi4_status", "Aktiv");
+	else if(localStorage.getItem("sherbimi5_status") == null)
+		localStorage.setItem("sherbimi5_status", "Aktiv");
+	else {
+		setStatus(1, localStorage.getItem("sherbimi1_status"));
+		setStatus(2, localStorage.getItem("sherbimi2_status"));
+		setStatus(3, localStorage.getItem("sherbimi3_status"));
+		setStatus(4, localStorage.getItem("sherbimi4_status"));
+		setStatus(5, localStorage.getItem("sherbimi5_status"));
+	}
 } else {
 	console.log("Browseri nuk e perkrah localStorage/sessionStorage");
 }
