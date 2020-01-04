@@ -37,7 +37,7 @@ header nav {
 	text-align: right;
 	overflow: hidden;
 }
-ul.horizontal, li {
+ul.horizontal, ul:not([class="default"]) > li {
 	list-style: none;
 }
 ul.horizontal > li {
@@ -88,10 +88,10 @@ section h1 {
 	font-size: 65px;
 }
 
-.news article {
+.pricing article {
 	text-align: center;
 }
-.news h1{
+.pricing h1{
 	font-size: 30px;
 	text-transform: uppercase;
 }
