@@ -20,6 +20,22 @@
 			outline: none;
 			color: white;
 		}
+		#kontaktet {
+		  /* Old Chrome, Safari and Opera */
+		  -webkit-column-count: 4;
+		  -webkit-column-gap: 40px;  
+		  -webkit-column-rule-style: solid;
+
+		  /* Old Firefox */  
+		  -moz-column-count: 4;
+		  -moz-column-gap: 40px;
+		  -moz-column-rule-style: solid;
+		  
+		  /* Standard syntax */
+		  column-count: 4;
+		  column-gap: 40px;
+		  column-rule-style: solid;
+		}
 	</style>
 </head>
 <body>
@@ -36,10 +52,10 @@
 				<li>
 				Services
 				<ul class="dropdown">
-					<li>Windows Server</li>
-					<li>Linux Server</li>
-					<li>Email Server</li>
-					<li>Cloud Storage</li>
+					<li><a href="windowsserver.html">Windows Server</a></li>
+					<li onclick="this.children[0].click();"><a href="linuxserver.html">Linux Server</a></li>
+					<li onclick="this.children[0].click();"><a href="emailserver.html">Email Server</a></li>
+					<li onclick="this.children[0].click();"><a href="cloudstorage.html">Cloud Storage</a></li>
 				</ul>
 				</li>
 				<li class="active"><a href="contact.html">Contact us</a></li>
@@ -65,13 +81,14 @@
 				<input autocomplete="on" type="submit" style="width:100%; margin: 5px;" value="Dërgo" class="btn btn-red">
 			</form>
 			<h3>Kontaktet tjera</h3>
-			<ul>
-				<li><a href="https://facebook.com/#">facebook</a></li>
-				<li><a href="https://twitter.com/#">twitter</a></li>
-				<li><a href="mailto:contact@alboturbo.vps">email</a></li>
-				<li><a href="tel://383-44-500-500">phone</a></li>
-			</ul>
+			<div id="kontaktet">
+				<a href="https://facebook.com/#">facebook</a><br/><br/>
+				<a href="https://twitter.com/#">twitter</a><br/><br/>
+				<a href="mailto:contact@alboturbo.vps">email</a><br/><br/>
+				<a href="tel://383-44-500-500">phone</a>
+			</div>
 			<a href="https://www.google.com/maps/place/Fakulteti+Teknik/@42.6487946,21.164962,17z"><address>Fakulteti Teknik, Pristina, 10000, Republika e Kosov&euml;s</address></a>
+			<p id="largesia"></p>
 		</div>
 		<div class="col25"></div>
 	</div>
@@ -108,5 +125,22 @@ $(document).ready(function() {
 	ctx.fillStyle = grd;
 	ctx.fillRect(10,10,150,80);
 });
+
+
+function merrLokacionin() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(tregoPozicionin);
+  } else { 
+    console.log("Geolocation is not supported by this browser.");
+  }
+}
+
+function tregoPozicionin(position) {
+	var TeknikuX = 42.6487946;
+	var TeknikuY = 21.164962;
+	var distanca = Math.sqrt(Math.pow((TeknikuX + position.coords.latitude), 2) + Math.pow((TeknikuY + position.coords.longitude), 2));
+	$("#largesia").text("Ju jeni larg nga qendra jone " + distanca + " njesi");
+}
+merrLokacionin();
 </script>
 </html>
