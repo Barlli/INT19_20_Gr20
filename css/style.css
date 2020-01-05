@@ -12,7 +12,7 @@ hr {
 }
 header {
 	background: #232425;
-	height: 100px;
+	min-height: 100px;
 	display: inline-block;
 	width: 100%;
 	color: whitesmoke;
@@ -33,7 +33,7 @@ header .logo h1 span {
 header nav {
 	width: 70%;
 	float: right;
-	height: 100px;
+	min-height: 100px;
 	text-align: right;
 	overflow: hidden;
 }
