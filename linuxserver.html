@@ -52,28 +52,56 @@
 				<h1>Linux Server - Specifikat</h1>
 			</div>
 			<div class="grid-item">
-				<table>
-					<tr>
-						<td>Processor</td>
-						<td>1.4Ghz 64-bit processor</td>
-					</tr>
-					<tr>
-						<td>RAM</td>
-						<td>4GB</td>
-					</tr>
-					<tr>
-						<td>Disk Space</td>
-						<td>50GB SSD</td>
-					</tr>
-					<tr>
-						<td>Network</td>
-						<td>Gigabit (100baseT) Ethernet adapter, 1Gbps</td>
-					</tr>
-					<tr>
-						<td>Users account</td>
-						<td>10</td>
-					</tr>
-				</table>
+				<h3 onclick='$("#specifikat").show();' ondblclick='$("#specifikat").hide();' style="cursor: pointer;">Specifikat <i class="fas fa-caret-right"></i></h3>
+				<div id="specifikat" style="display: none;">
+					<table>
+						<tr>
+							<td>Processor</td>
+							<td>1.4Ghz 64-bit processor</td>
+						</tr>
+						<tr>
+							<td>RAM</td>
+							<td>4GB</td>
+						</tr>
+						<tr>
+							<td>Disk Space</td>
+							<td>50GB SSD</td>
+						</tr>
+						<tr>
+							<td>Network</td>
+							<td>Gigabit (100baseT) Ethernet adapter, 1Gbps</td>
+						</tr>
+						<tr>
+							<td>Users account</td>
+							<td>10</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+			<div class="grid-item">
+			</div>
+			<div class="grid-item">
+				<h3 onclick='$("#driverat").fadeToggle();' style="cursor: pointer;">Driverat <i class="fas fa-caret-right"></i></h3>
+				<div id="driverat"  style="display: none;">
+					<ul>
+						<li>
+							<a href="#">Graphics Drivers</a>
+						</li>
+						<li>
+							<a href="#">Sound Drivers</a>
+						</li>
+						<li>
+							<a href="#">Network Adapter Drivers</a>
+						</li>
+					</ul>
+				</div>
+			</div><div class="grid-item">
+			</div>
+			<div class="grid-item">
+				<h3  onclick='$("#manuali").slideToggle();' style="cursor: pointer;">Manual <i class="fas fa-caret-right"></i></h3>
+				<div id="manuali" style="display: none;">
+					<a href="#">User manual</a>
+				</div>
 			</div>
 		</div>
 	</div>
