@@ -67,7 +67,7 @@
 	<h1 class="center">Contact us</h1>
 	<div class="row">
 		<div class="col25"></div>
-		<div class="col50">
+		<div class="col50" style="resize: both; overflow: auto; outline: 1px dashed black; outline-offset: 2px;">
 			<form method="POST" action="#">
 				<input autocomplete="on" type="text" name="fullname" style="width: 100%; padding: 10px 5px; margin-bottom: 5px;" required="required" placeholder="Name"><br/>
 				<input autocomplete="on" type="email" name="email" style="width: 100%; padding: 10px 5px; margin-bottom: 5px;" required="required" placeholder="Email"><br/>
@@ -98,6 +98,28 @@
 </body>
 <script type="text/javascript">
 $(document).ready(function() {
+	//validate required
+		for(var i = 0; i < $("input[required]").length; i++) {
+		(function(j){
+				$($("input[required]")[j]).keyup(function(){
+					if($("input[required]")[j].value == "")
+						$($("input[required]")[j]).css("background-color", "red");
+					else
+						$($("input[required]")[j]).css("background-color", "green");
+				});
+			})(i);
+		}
+		for(var i = 0; i < $("textarea[required]").length; i++) {
+		(function(j){
+				$($("textarea[required]")[j]).keyup(function(){
+					if($("textarea[required]")[j].value == "")
+						$($("textarea[required]")[j]).css("background-color", "red");
+					else
+						$($("textarea[required]")[j]).css("background-color", "green");
+				});
+			})(i);
+		}
+
 	//Hover
 	$('.dropdown').parent().hover(
 		function() {
@@ -139,7 +161,7 @@ function tregoPozicionin(position) {
 	var TeknikuX = 42.6487946;
 	var TeknikuY = 21.164962;
 	var distanca = Math.sqrt(Math.pow((TeknikuX + position.coords.latitude), 2) + Math.pow((TeknikuY + position.coords.longitude), 2));
-	$("#largesia").text("Ju jeni larg nga qendra jone " + distanca + " njesi");
+	$("#largesia").text("Ju jeni larg nga qendra jone " + distanca.toFixed(6) + " njesi");
 }
 merrLokacionin();
 </script>
