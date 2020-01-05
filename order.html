@@ -55,7 +55,8 @@ function addToCart(i){
 	$("#shportaElements").append("<p>" +  $(i).prev().text() + "</p>");
 	console.log($(i).parent().next().text());
 	cmimi += parseFloat($(i).parent().next().text());
-	$("#cmimi").text(cmimi);
+	if(!Number.isNaN(cmimi))
+		$("#cmimi").text(cmimi.toString());
 }
 	</script>
 </head>
@@ -145,7 +146,7 @@ function addToCart(i){
 				<div class="col25">
 					<div id="shporta" style="overflow-y: scroll;">
 						<h3>Shporta</h3>
-						<div id="shportaElements" style="border: 1px dashed; min-height: 100px; height: auto;" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+						<div id="shportaElements" style="border: 1px dashed; min-height: 500px; height: auto;" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
 					</div>
 					<label>&Ccedil;mimi: </label><output name="cmimi" id="cmimi"></output>
 					<button class="btn btn-orange" style="width: 100%;">Shtoni në shportë</button>
