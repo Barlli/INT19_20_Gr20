@@ -2,6 +2,9 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<link rel="stylesheet" type="text/css" href="./css/fontawesome/css/all.css">
+
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <style>
 canvas {
     border:1px solid #d3d3d3;
@@ -10,8 +13,22 @@ canvas {
 </style>
 </head>
 <body onload="startGame()">
+  <br/>
+  <audio controls id="soundController" style="display: none;">
+  <source src="./sounds/supermario.mp3" type="audio/mpeg">
+Your browser does not support the audio element.
+</audio>
+  <audio controls id="gameOver"style="display: none;" >
+  <source src="./sounds/gameover.mp3" type="audio/mpeg">
+Your browser does not support the audio element.
+</audio>
+<button><i id="sound" class="fas fa-volume-up"></i></button>
+<p>Time spent: <span id="timespent"></span></p>
+<img height="50" style="transform: translate(50px, 80px);" src="./images/supermario.png">
+<img height="50" style="transform: rotate(20deg);" src="./images/supermario.png">
+<img height="50" style="transform: scale(1, 1.1);" src="./images/supermario.png">
+<img height="50" style="transform: skew(20deg, 10deg);" src="./images/supermario.png">
 <script>
-
 var myGamePiece;
 var myObstacles = [];
 var target;
@@ -56,7 +73,7 @@ function component(width, height, color, x, y) {
     this.width = width;
     this.height = height;
     this.speedX = 0;
-    this.speedY = 0;    
+    this.speedY = 0;
     this.x = x;
     this.y = y;    
     this.update = function() {
@@ -87,12 +104,17 @@ function component(width, height, color, x, y) {
 
 function updateGameArea() {
     var x, y;
-    for (i = 0; i < myObstacles.length; i += 1) {
-        if (myGamePiece.crashWith(myObstacles[i])) {
+    var j = 0;
+    while( j < myObstacles.length){
+      if (myGamePiece.crashWith(myObstacles[j])) {
             myGameArea.stop();
-            alert("Game over!");
+            $("#soundController")[0].pause();
+            $("#gameOver")[0].play();
+            stopWorker();
+            j = 0;
             return;
         }
+      j++;
     }
     if (myGamePiece.crashWith(target)) {
             myGameArea.stop();
@@ -135,15 +157,19 @@ function clearmove() {
 }
 </script>
 <div style="text-align:center;width:480px;">
-    <h1>Not found</h1>
+    <h1><div id="not">Not</div> <div id="found">found</div></h1>
   <button onmousedown="moveup()" onmouseup="clearmove()" ontouchstart="moveup()">UP</button><br><br>
   <button onmousedown="moveleft()" onmouseup="clearmove()" ontouchstart="moveleft()">LEFT</button>
   <button onmousedown="moveright()" onmouseup="clearmove()" ontouchstart="moveright()">RIGHT</button><br><br>
   <button onmousedown="movedown()" onmouseup="clearmove()" ontouchstart="movedown()">DOWN</button>
 </div>
+
+<img height="50" style="transform: rotateX(150deg);" src="./images/supermario.png">
+<img height="50" style="transform: rotateY(150deg);" src="./images/supermario.png">
+<img height="50" style="trasnform: rotate3d(1,2,3,120deg);" src="./images/supermario.png">
 <script>
     document.addEventListener("keydown", function(event) {
-      event.preventDefault();
+      //event.preventDefault();
       const key = event.key; 
       switch (key) { 
         case "ArrowLeft":
@@ -164,6 +190,73 @@ function clearmove() {
           break;
       }
     });
+</script>
+<style type="text/css">
+    
+#not, #found {
+  transition-property: all;
+  transition-property: transform;
+
+    transition-duration: 1s;
+}
+#not:hover {
+  -ms-transform: rotate(20deg); /* IE 9 */
+  -webkit-transform: rotate(20deg); /* Safari prior 9.0 */
+  transform: rotate(20deg); /* Standard syntax */
+}
+#found:hover {
+  -webkit-transform: rotateY(130deg); /* Safari prior 9.0 */
+  transform: rotateY(130deg); /* Standard syntax */
+
+}
+</style>
+<script type="text/javascript">
+  $(document).ready(function() {
+    $("#sound").click(function(){
+      if($("#sound").hasClass("fa-volume-up")){
+        $("#sound").removeClass("fa-volume-up").addClass("fa-volume-mute");
+        $("#soundController")[0].pause();
+      }
+      else{
+        $("#sound").removeClass("fa-volume-mute").addClass("fa-volume-up");
+        $("#soundController")[0].play();
+      }
+    });
+    try {
+      if(($("#soundController")[0]) == undefined || ($("#soundController")[0]) == null){
+        throw "Objekti nuk ekziston";
+      }
+    }
+    catch(err) {
+      console.log("errori" + err.message);
+    }
+  });
+
+
+
+  //webworker
+
+  var w;
+
+  function startWorker() {
+    if(typeof(Worker) !== "undefined") {
+      if(typeof(w) == "undefined") {
+        w = new Worker("js/counter.js");
+      }
+      w.onmessage = function(event) {
+        document.getElementById("timespent").innerText = event.data;
+      };
+    } else {
+      document.getElementById("result").innerHTML = "Sorry, your browser does not support Web Workers...";
+    }
+  }
+
+  function stopWorker() { 
+    w.terminate();
+    w = undefined;
+  }
+  startWorker();
+  </script>
 </script>
 </body>
 </html>
