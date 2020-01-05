@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html manifest=".appcache">
+<head>
+	<title>Alboturbo</title>
+	<link rel="stylesheet" type="text/css" href="./css/style.css">
+	<link rel="stylesheet" type="text/css" href="./css/abkstack.css">
+	<link rel="stylesheet" type="text/css" href="./css/fontawesome/css/all.css">
+	<link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+	<meta charset="UTF-8">
+	<style>
+		.grid-container {
+		  display: inline-grid;
+		  grid-template-columns: auto auto;
+		  padding: 10px;
+		}
+		.grid-item {
+		  padding: 20px;
+		  font-size: 18px;
+		}
+	</style>
+</head>
+<body>
+	<header>
+		<div class="logo" >
+			<h1><span>A</span>lboTurbo<span style="color: red;">VPS</span></h1>
+			<p>VPS-at ma t'mire n'sheher</p>
+		</div>
+		<nav>
+			<ul class="horizontal">
+				<li><a href="index.html">Home</a></li>
+				<li onclick="this.children[0].click();"><a href="blog.html" class="text-white">Blog</a></li>
+				<li id="navPricing">Pricing</li>
+				<li class="active">
+				Services
+				<ul class="dropdown">
+					<li><a href="windowsserver.html">Windows Server</a></li>
+					<li onclick="this.children[0].click();"><a href="linuxserver.html">Linux Server</a></li>
+					<li onclick="this.children[0].click();"><a href="emailserver.html">Email Server</a></li>
+					<li onclick="this.children[0].click();"><a href="cloudstorage.html">Cloud Storage</a></li>
+				</ul>
+				</li>
+				<li onclick="this.children[0].click();"><a href="contact.html">Contact us</a></li>
+				<li onclick="this.children[0].click();"><a href="login.html" class="text-white">Client Login</a></li>
+			</ul>
+		</nav>
+	</header>
+	<div class="container">
+		<div class="grid-container">
+			<div class="grid-item">
+				<h1>Email Server- Specifikat</h1>
+			</div>
+			<div class="grid-item">
+				<table>
+					<tr>
+						<td>Active</td>
+						<td>24/7</td>
+					</tr>
+					<tr>
+						<td>Quota</td>
+						<td>Unlimited</td>
+					</tr>
+					<tr>
+						<td>Alias</td>
+						<td>Unlimited</td>
+					</tr>
+					<tr>
+						<td>Domains</td>
+						<td>5</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+	</div>
+	<div class="clear10" style="background-attachment: scroll; background-image: url(./images/divbg.jpg); opacity: 0.1;"></div>
+	<footer class="container">
+		<div class="row">
+			<div class="col25">
+				<h1>About us</h1>
+				<img src="./images/milingona.gif"/>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem magnam eligendi assumenda animi voluptates reprehenderit eum repudiandae expedita excepturi officia? Incidunt temporibus rem praesentium vel quaerat, libero accusamus cum delectus.</p>
+				<a href="#">Read more</a>
+			</div>
+
+			<div class="col25">
+				<h1>Quick links</h1>
+				<ul>
+					<li><a href="index.html">Home</a></li>
+					<li><a href="#">Style Demo</a></li>
+					<li><a href="#">Full Width</a></li>
+					<li><a href="#">portfolio</a></li>
+					<li><a href="#">Gallery</a></li>
+					<li><a href="#">Servers</a></li>
+					<li><a href="#">Linux Servers</a></li>
+					<li><a href="#">Windows Servers</a></li>
+				</ul>
+			</div>
+
+			<div class="col25" id="latestPosts">
+				<h1>Latest Blog Posts</h1>
+			</div>
+
+			<div class="col25">
+				<h1>Contact Us</h1>
+				<form method="POST" action="#">
+					<input type="text" name="fullname" required="required" placeholder="Name">
+					<input type="email" name="email" required="required" placeholder="Email">
+					<input type="text" name="subject"  required="required" placeholder="Subject">
+					<textarea rows="5" placeholder="Message"></textarea><br/>
+					<input type="submit" class="btn btn-red">
+				</form>
+			</div>
+		</div>
+		<hr/>
+		<p>Copyright &copy; 2019 CompanyName</p>
+	</footer>
+
+	<script type="text/javascript">
+$(document).ready(function() { 
+	//footer latest blog posts
+    $.getJSON('./blog.json', function(result) { 
+	    $.each(result, function(i, field){
+            if(i < 4)
+            $('#latestPosts').append('<article><h3>' + field.title + '</h3><p>' + field.content.split(/\s+/).slice(0,5).join(" ") + ' ...</p><a href="blog.html?id=' + i + '">Read more</a></article>');
+            console.log("Posts loaded");
+	    	
+	    });
+	}); 
+	//Hover
+	$('.dropdown').parent().hover(
+		function() {
+			$('.dropdown').css('display','block');
+		}, function() {
+			$('.dropdown').css('display','none');
+		}
+	);
+	if(window.location.href.includes("#pricing")){
+		$('html, body').animate({scrollTop: $('.pricing').offset().top}, 1000);
+	} 
+
+});
+$("#navPricing").click(function(){
+	$('html, body').animate({scrollTop: $('.pricing').offset().top}, 1000);
+	if(!window.location.href.includes("#pricing")){
+		window.location.href = window.location.href + "#pricing";
+	} 
+});
+	</script>
+</body>
+</html>
