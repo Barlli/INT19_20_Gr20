@@ -55,7 +55,7 @@
 				</ul>
 			</div>
 			<div class="col25">
-				<h1>Artikujt të rekomanduar</h1>
+				<h1><b>Artikujt të rekomanduar</b></h1>
 				<ul id="recommendedArticles">
 					<li>Lorem</li>
 					<li>Impsum</li>
@@ -159,7 +159,7 @@ $(document).ready(function() {
 	    	}
 	    });
     	if(totalFound == 0){
-    		$('#thePost').text("Nuk u gjet asnjë rezultat!");
+    		$('#thePost').html("<mark><u>Nuk u gjet asnjë rezultat!</u></mark>");
 			$("#searchBox")[0].focus();
 		}
 	}); 
