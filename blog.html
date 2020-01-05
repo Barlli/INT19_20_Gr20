@@ -9,6 +9,14 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 	<meta charset="UTF-8">
+	<style>
+		.starSVG{
+  			background-color:#ff0;
+		}
+		.starSVG path{
+		  fill: #828282;
+		}
+	</style>
 </head>
 <body>
 	<header>
@@ -65,6 +73,10 @@
 				<a href="https://facebook.com/#" target="_blank"><i class="fab fa-facebook-square"></i></a>
 				<i class="fab fa-instagram"></i>
 				<i class="fab fa-twitter-square"></i>
+				<canvas id="adCanvas" width="300" height="300"
+				style="border:1px solid #d3d3d3;">
+					Your browser does not support canvas.
+				</canvas>
 			</div>
 		</div>
 	</article>
@@ -148,7 +160,11 @@ $(document).ready(function() {
             if(i == id)
             {
             	$('#postTitle').text(field.title);
-            	$('#postContent').text(field.content);
+            	$('#postContent').html(field.content);
+            	$('#postContent').append("<br/>");
+            	for(var i = 0; i < 5; i++){
+            	$('#postContent').append('<svg class="starSVG" width="21px" height="20px"><path d="M0,0.054V20h21V0.054H0z M15.422,18.129l-5.264-2.768l-5.265,2.768l1.006-5.863L1.64,8.114l5.887-0.855 l2.632-5.334l2.633,5.334l5.885,0.855l-4.258,4.152L15.422,18.129z"/></svg>');
+            	}
             }
             else if(id == "" || id == undefined || id== null){
             	if(i >= postsPerPage*(page-1) && i < postsPerPage*page){
@@ -179,6 +195,15 @@ $(document).ready(function() {
 			$('.dropdown').css('display','none');
 		}
 	);
+
+
+    var canvas = document.getElementById("adCanvas");
+    var ctx = canvas.getContext("2d");
+    var img = new Image();
+    img.src = "http://talalfit.com/wp-content/uploads/2017/02/300x300.png";
+    img.onload = function() {
+   		ctx.drawImage(img, 10, 10);
+    }
 }); 
 	</script>
 </body>
