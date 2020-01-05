@@ -8,6 +8,26 @@
 	<link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+	<script src="js/script.js"></script>
+	<script>
+		
+		function validateEmail(i) {
+			console.log("asd");
+			if(!checkEmail(i.value)){
+				$(i).css("background-color", "red");
+			}
+			else {
+				$(i).css("background-color", "lightgreen");
+			}
+		}
+		function validatePassowrd(i){
+			console.log(i.value.length);
+			if(i.value.length < 6)
+				$(i).css("background-color", "red");
+			else
+				$(i).css("background-color", "lightgreen");
+		}
+	</script>
 	<meta charset="UTF-8">
 	<style type="text/css">
 		body  {
@@ -16,12 +36,51 @@
 			-moz-background-size: cover;
 			-o-background-size: cover;
 			background-size: cover;
+			background-origin: padding-box;
 		}
 		#loginPanel {
 			border: 6px solid #00000090;
 			border-radius: 20px;
 			box-shadow: 0px 0px 1000px purple;
 			background: #00000090;
+			background-image: url(./images/uploads/line.png), url(./images/uploads/backline.png);
+			background-size: 1%;
+		  	-webkit-animation-name: loginpanelbganimation; /* Safari 4.0 - 8.0 */
+		  	-webkit-animation-duration: 4s; /* Safari 4.0 - 8.0 */
+		  	animation-name: loginpanelbganimation;
+		  	animation-duration: 4s;
+		  	background-position: 0;
+		}
+		#signInBTN {
+			background-image: -webkit-linear-gradient(left, blue, purple); 
+			border: 0; padding: 5px 10px; color: white; 
+			font-weight: bold; 
+			font-size: 18px; 
+			text-shadow: 1px 1px 1px black;	
+		  -webkit-animation-name: btnsigninanimation; /* Safari 4.0 - 8.0 */
+		  -webkit-animation-duration: 4s; /* Safari 4.0 - 8.0 */
+		  animation-name: btnsigninanimation;
+		  animation-duration: 4s;
+		}
+		@-webkit-keyframes btnsigninanimation {
+	  		from {background-image: -webkit-linear-gradient(left, blue, purple);}
+  			to {background-image: -webkit-linear-gradient(left, purple, blue);}
+		}
+		@keyframes btnsigninanimation {
+	  		from {background-image: -webkit-linear-gradient(left, blue, purple);}
+  			to {background-image: -webkit-linear-gradient(left, purple, blue);}
+		}
+		@-webkit-keyframes loginpanelbganimation {
+	  		from {background-size: 1%;
+	  			background-position: 10px;}
+  			to {background-size: 5%;
+  				background-position: 0px;}
+		@keyframes loginpanelbganimation {
+	  		from {background-size: 1%;
+	  			background-position: 10px;}
+  			to {background-size: 5%;
+  				background-position: 0px;}
+
 		}
 	</style>
 </head>
@@ -32,16 +91,18 @@
 		<div class="col50">
 			<div id="loginPanel" class="center text-white">
 			<canvas id="kanvasi" width="230" height="60">Your browser does not support the HTML5 canvas tag.</canvas>
-				<form action="dashboard.html" method="POST" style="padding: 0 200px; ">
+				<form id="forma" action="dashboard.html" method="POST" style="padding: 0 200px; ">
 					<label for="email">Email:</label><br/>
-					<input style="width: 100%;" type="email" id="email" name="email" placeholder="filanfisteku@domain.al" required="required"><br/><br/>
-					<label for="password">Password:</label><br/>
-					<input style="width: 77%;" type="password" id="password"  pattern=".{6,}" title="Fjalekalimi duhet te permbaj me shume se 6 karaktere" name="password" placeholder="Password" required="required">
+					<input style="width: 100%;" autofocus type="email" id="email" name="email" placeholder="filanfisteku@domain.al" required="required"  onkeyup="validateEmail(this);"><br/><br/>
+					<label for="password" >Password:</label><br/>
+					<input maxlength="50" style="width: 77%;" onkeyup="validatePassowrd(this)" type="password" id="password"  pattern=".{6,}" title="Fjalekalimi duhet te permbaj me shume se 6 karaktere" name="password" placeholder="Password" required="required">
 					<button type="button"  style="width: 19%; background-image: radial-gradient(blue, purple);border: 0; color: white; text-shadow: 1px 1px 1px black; padding: 5px 10px;" tabindex="-1" id="showPassword"><i class="fas fa-eye"></i></button>
 					<br/><br/>
 					<keygen name="key"></label>
-					<input type="submit" value="Sign In" style="background-image: -webkit-linear-gradient(left, blue, purple); border: 0; padding: 5px 10px; color: white; font-weight: bold; font-size: 18px; text-shadow: 1px 1px 1px black;">
+
 				</form>
+				<input form="forma" type="submit" value="Sign In" id="signInBTN">
+				<input form="forma" type="reset" value="RESET">
 			</div>
 			<p class="center"><a class="text-white" href="index.html" style="text-decoration: none; letter-spacing: 2px; font-size: 18px; background: #00000099; padding: 10px;"><< Kthehu ne ballinë</a></p>
 		</div>
