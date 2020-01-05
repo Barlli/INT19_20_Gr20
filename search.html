@@ -144,6 +144,10 @@ $(document).ready(function() {
             $('#latestPosts').append('<article><h3>' + field.title + '</h3><p>' + field.content.split(/\s+/).slice(0,5).join(" ") + ' ...</p><a href="blog.html?id=' + i + '">Read more</a></article>');
 	    	var howManyWordsAreIn = 0;
 	    	for(var j = 0; j < subqueries.length; j++){
+	    		//filter rude works
+	    		var obj = /sh\*t/.exec(subqueries[j]);
+	    		if(obj != null)
+	    			continue;
 	    		if(field.title.toLowerCase().includes(subqueries[j]) || field.content.toLowerCase().includes(subqueries[j])){
 	            	howManyWordsAreIn++;
 		    	}
